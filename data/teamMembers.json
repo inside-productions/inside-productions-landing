@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Jesús Machuca",
+    "position": "Lead Programmer.",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
+    "image": "/jesus-machuca.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Diego Olvera",
+    "position": "Tech Artist",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
+    "image": "/diego-olvera.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "Sara Sierra",
+    "position": "Tech Artist",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
+    "image": "/sara-sierra.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "Bety Vega",
+    "position": "Tech Artist",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
+    "image": "/bety-vega.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "Angélica Riascos",
+    "position": "3D Artist",
+    "description": "Lic. Narrativas Digitales de la Universidad de los Andes, especialización en cine, video y animación.",
+    "image": "/angelica-riascos.jpeg"
+  },
+  {
+    "id": 6,
+    "name": "Pamela Flores",
+    "position": "3D Texture Artist",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
+    "image": "/pamela-flores.jpeg"
+  },
+  {
+    "id": 7,
+    "name": "Esmeralda Hernández",
+    "position": "3D Artist",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en VFX.",
+    "image": "/esmeralda-hernandez.jpeg"
+  },
+  {
+    "id":8,
+    "name": "Kevin Ye Chan",
+    "position": "Audio Design",
+    "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
+    "image": "/kevin-ye-chan.jpeg"
+  }
+]

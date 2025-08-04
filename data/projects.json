@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Cucaracha Vaquera",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "image": "/cucaracha-vaquera.jpeg",
+    "hasVideo": false,
+    "gallery": [
+      "/cucaracha-vaquera-1.png",
+      "/cucaracha-vaquera-2.png",
+      "/cucaracha-vaquera-3.png",
+      "/cucaracha-vaquera-4.png"
+    ],
+    "videos": [
+      {
+        "title": "Cucaracha Vaquera - Videojuego AR",
+        "link": "https://player.vimeo.com/video/1106949178"
+      }
+    ],
+    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+  },
+  {
+    "id": 2,
+    "title": "Trouble Train",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "image": "/trouble-train.jpeg",
+    "hasVideo": false,
+    "gallery": [
+      "/trouble-train-1.jpg",
+      "/trouble-train-2.jpg",
+      "/trouble-train-3.jpg",
+      "/trouble-train-4.jpg",
+      "/trouble-train-5.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Trouble Train - Trailer Videojuego VR",
+        "link": "https://player.vimeo.com/video/1106970227"
+      },
+      {
+        "title": "Trouble Train - Videojuego VR",
+        "link": "https://player.vimeo.com/video/1106970930"
+      }
+    ],
+    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+  },
+  {
+    "id": 3,
+    "title": "Restore It Yourself Studio",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "image": "/restore-it-yourself-studio.jpeg",
+    "hasVideo": false,
+    "gallery": [
+      "/restore-it-yourself-studio-1.png",
+      "/restore-it-yourself-studio-2.png",
+      "/restore-it-yourself-studio-3.png",
+      "/restore-it-yourself-studio-4.png"
+    ],
+    "videos": [
+      {
+        "title": "Restore It Yourself Studio - Experiencia Interactiva",
+        "link": "https://player.vimeo.com/video/1106969440"
+      }
+    ],
+    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+  },
+  {
+    "id": 4,
+    "title": "Inside",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "image": "/inside.png",
+    "hasVideo": false,
+    "gallery": [
+      "/inside-1.png",
+      "/inside-2.png",
+      "/inside-3.png",
+      "/inside-4.png",
+      "/inside-5.png"
+    ],
+    "videos": [
+      {
+        "title": "Inside - Videojuego",
+        "link": "https://player.vimeo.com/video/1106968496"
+      }
+    ],
+    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+  },
+  {
+    "id": 5,
+    "title": "Panoptic",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "image": "/panoptic.jpeg",
+    "hasVideo": false,
+    "gallery": [
+      "/panoptic-1.png",
+      "/panoptic-2.png",
+      "/panoptic-3.png",
+      "/panoptic-4.png",
+      "/panoptic-5.png",
+      "/panoptic-6.png",
+      "/panoptic-7.png",
+      "/panoptic-8.png"
+    ],
+    "videos": [
+      {
+        "title": "Panoptic - Experiencia Interactiva",
+        "link": "https://player.vimeo.com/video/1106955041"
+      }
+    ],
+    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+  }
+]
