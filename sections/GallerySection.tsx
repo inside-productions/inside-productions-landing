@@ -138,7 +138,14 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                       <h3 className="text-lg font-bold tracking-wide mb-3 group-hover:text-[#FCDD2F] transition-colors duration-300 relative z-10 text-black font-heading">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed relative z-10">{project.description}</p>
+                      <p className="text-gray-600 text-sm leading-relaxed relative z-10">
+                        {project.description.split('\n').map((text, i) => (
+                          <span key={i}>
+                            {text}
+                            {i < project.description.split('\n').length - 1 && <br />}
+                          </span>
+                        ))}
+                      </p>
                     </CardContent>
                   </Card>
                 </div>

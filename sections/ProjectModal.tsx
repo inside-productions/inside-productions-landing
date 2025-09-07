@@ -60,7 +60,14 @@ export default function ProjectModal({
           <h3 className="text-3xl font-bold tracking-wider text-center mb-2 text-black font-heading">
             {selectedProject.title}
           </h3>
-          <p className="text-gray-600 text-center mb-8">{selectedProject.fullDescription}</p>
+          <p className="text-gray-600 text-center mb-8">
+            {selectedProject.fullDescription.split('\n').map((text, i) => (
+              <span key={i}>
+                {text}
+                {i < selectedProject.fullDescription.split('\n').length - 1 && <br />}
+              </span>
+            ))}
+          </p>
 
           {/* Carousel Container */}
           <div className="relative mb-8">
