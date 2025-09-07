@@ -46,7 +46,7 @@ export default function HeroSection({ scrollToSection, AnimatedParticles }: Hero
                 
         <div className="text-xl md:text-3xl lg:text-4xl font-medium tracking-wide mb-8 mt-8 md:mt-16 font-heading text-white/80">
           <div className="flex flex-wrap justify-center gap-4">
-            {["INNER", "VISSIONS"].map((word, index) => (
+            {["INNOVACIÓN", "INTERACTIVA", "AL"].map((word, index) => (
               <span
                 key={index}
                 className="inline-block hover:text-[#FCDD2F] transition-all duration-700 ease-out hover:scale-105 hover:-rotate-1"
@@ -57,7 +57,7 @@ export default function HeroSection({ scrollToSection, AnimatedParticles }: Hero
             ))}
           </div>
           <div className="flex flex-wrap justify-center gap-4 mt-4">
-            {["OUTER", "REALITIES"].map((word, index) => (
+            {["SERVICIO", "DE", "TU", "EMPRESA"].map((word, index) => (
               <span
                 key={index + 3}
                 className="inline-block hover:text-[#FCDD2F] transition-all duration-700 ease-out hover:scale-105 hover:rotate-1"

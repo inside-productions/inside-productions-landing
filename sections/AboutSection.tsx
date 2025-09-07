@@ -23,7 +23,7 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
     setShowTeamModal(false)
   }
   return (
-    <section id="about" className="h-screen py-20 bg-white relative overflow-hidden flex items-center">
+    <section id="about" className="min-h-screen py-20 bg-white relative overflow-hidden flex items-center">
       {/* Dynamic sparks background */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatedParticles 
@@ -47,18 +47,20 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
             <Eye className="w-6 h-6" />
           </button>
         </div>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center px-4">
           <h3 className="text-3xl font-bold tracking-wide mb-8 hover:text-[#FCDD2F] transition-colors duration-500 animate-slide-up-delay font-heading">
             INNOVACIÓN EN CADA PIXEL
           </h3>
-          <p className="text-lg leading-relaxed mb-8 animate-fade-in-up">
-            Somos un equipo multidisciplinario de creativos, desarrolladores y visionarios especializados en crear
-            experiencias inmersivas que trascienden los límites de la realidad tradicional. Nuestra misión es
-            transformar ideas complejas en experiencias tangibles y memorables, utilizando las últimas tecnologías de
-            realidad extendida para conectar marcas con sus audiencias de maneras nunca antes imaginadas.
-          </p>
+          <div className="space-y-4 mb-8 animate-fade-in-up">
+            <p className="text-base md:text-lg leading-relaxed">
+              Somos un estudio creativo especializado en el desarrollo de experiencias interactivas que combinan realidad aumentada (AR), realidad virtual (VR) y videojuegos. Diseñamos soluciones a la medida para empresas e instituciones con fines educativos, de capacitación y entretenimiento.
+            </p>
+            <p className="text-base md:text-lg leading-relaxed">
+              Nuestra misión es convertir procesos complejos en vivencias claras, dinámicas y memorables, facilitando el aprendizaje acelerado, optimizando entrenamientos y mejorando la eficiencia en distintos entornos. Con un enfoque multidisciplinario y el uso de las últimas tecnologías de realidad extendida, conectamos a las personas con el conocimiento de manera innovadora y efectiva.
+            </p>
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
-            {["+50 Proyectos", "5 Años Experiencia", "Equipo Internacional"].map((badge, index) => (
+            {["Procesos Optimizados", "Equipo Multidisciplinario", "Visión Innovadora"].map((badge, index) => (
               <Badge
                 key={index}
                 variant="secondary"
