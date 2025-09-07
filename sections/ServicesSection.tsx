@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent } from "@/components/card"
-import { Eye, CuboidIcon as Cube, Layers, Gamepad2 } from "lucide-react"
+import Image from "next/image"
 
 interface ServicesSectionProps {
   AnimatedParticles: React.ComponentType<{
@@ -16,28 +16,23 @@ interface ServicesSectionProps {
 
 const services = [
   {
-    icon: <Eye className="w-6 h-6" />,
-    title: "Realidad Aumentada",
+    image: "/realidad-aumentada.jpeg",
+    title: "Realidad Aumentada (AR)",
     description:
-      "Experiencias AR que fusionan el mundo digital con el físico, creando interacciones inmersivas y memorables.",
+      "Experiencias que integran el mundo digital con el físico para educar, comunicar y sorprender, generando interacciones inmersivas y memorables.",
   },
   {
-    icon: <Cube className="w-6 h-6" />,
-    title: "Mundos Virtuales",
+    image: "/realidad-virtual.jpeg",
+    title: "Realidad Virtual (VR)",
     description:
-      "Entornos VR completamente inmersivos para entrenamientos, presentaciones y experiencias de marca únicas.",
+      "Entornos completamente inmersivos que permiten explorar, aprender y vivir experiencias únicas, desde presentaciones hasta proyectos educativos o culturales.",
   },
   {
-    icon: <Layers className="w-6 h-6" />,
-    title: "Realidad Mixta",
+    image: "/videojuegos-gamificacion.jpeg",
+    title: "Videojuegos y Gamificación",
     description:
-      "Soluciones MR que combinan elementos virtuales y reales para crear experiencias híbridas innovadoras.",
-  },
-  {
-    icon: <Gamepad2 className="w-6 h-6" />,
-    title: "Experiencias Interactivas",
-    description: "Instalaciones y aplicaciones interactivas que transforman la manera de conectar con tu audiencia.",
-  },
+      "Diseño de juegos y dinámicas interactivas que convierten procesos complejos en experiencias atractivas, potenciando el aprendizaje, la motivación y el entretenimiento.",
+  }
 ]
 
 export default function ServicesSection({ AnimatedParticles }: ServicesSectionProps) {
@@ -58,19 +53,29 @@ export default function ServicesSection({ AnimatedParticles }: ServicesSectionPr
         <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-16 animate-slide-up font-heading">
           QUÉ HACEMOS
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <Card
               key={index}
-              className="border-none shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in-up"
+              className="border-none shadow-lg bg-white/80 backdrop-blur-sm animate-fade-in-up overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardContent className="p-6 text-center relative overflow-hidden">
-                <div className="text-[#FCDD2F] mb-4 flex justify-center relative z-10">{service.icon}</div>
-                <h3 className="text-lg font-bold tracking-wide mb-4 relative z-10 text-black font-heading">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed relative z-10 text-sm">{service.description}</p>
+              <CardContent className="p-0 text-center relative overflow-hidden">
+                <div className="flex justify-center relative z-10 h-48 w-full overflow-hidden">
+                  <Image 
+                    src={service.image}
+                    alt={service.title}
+                    width={400}
+                    height={300}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold tracking-wide mb-4 relative z-10 text-black font-heading">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed relative z-10 text-sm">{service.description}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
