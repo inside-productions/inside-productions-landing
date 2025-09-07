@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Cucaracha Vaquera",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "description": "Juego de realidad aumentada donde una cucaracha atrapada en un televisor vive aventuras en el Viejo Oeste.",
     "image": "/cucaracha-vaquera.jpeg",
     "hasVideo": false,
     "gallery": [
@@ -17,12 +17,12 @@
         "link": "https://player.vimeo.com/video/1106949178"
       }
     ],
-    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+    "fullDescription": "Adéntrate en el salvaje y absurdo mundo de La Cucaracha Vaquera, un juego de realidad aumentada donde lo imposible cobra vida. Una intrépida cucaracha ha quedado atrapada dentro de una vieja televisión… y no en cualquier canal, sino en el corazó del Viejo Oeste. Tu misión es ayudarla a escapar manipulando el televisor de forma física, combinando objetos reales con elementos digitales en una experiencia interactiva única. Gira, inclina y explora. La frontera entre lo real y lo virtual nunca fue tan divertida... ni tan vaquero."
   },
   {
     "id": 2,
     "title": "Trouble Train",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "description": "Experiencia VR contra reloj en un tren fuera de control en el Viejo Oeste; deberás reparar, esquivar obstáculos y tomar decisiones críticas para sobrevivir.",
     "image": "/trouble-train.jpeg",
     "hasVideo": false,
     "gallery": [
@@ -42,12 +42,12 @@
         "link": "https://player.vimeo.com/video/1106970930"
       }
     ],
-    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+    "fullDescription": "Embárcate en una carrera contra reloj a bordo de un tren fuera de control, en pleno Viejo Oeste. En Trouble Train, cada segundo cuenta mientras te enfrentas al desafío de mantener una locomotora defectuosa en funcionamiento. Repara fugas, esquiva obstáculos y toma decisiones críticas mientras se cae a pedazos y el caos amenaza con descarrilarlo todo. ¿Tienes lo necesario para mantener el tren en marcha y salir con vida de esta travesía salvaje? El destino va sobre rieles... y tú estás al mando."
   },
   {
     "id": 3,
     "title": "Restore It Yourself Studio",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "description": "Experiencia interactiva en la que te conviertes en restaurador de arte, aprendiendo a limpiar y conservar obras maestras desde tu propio estudio.",
     "image": "/restore-it-yourself-studio.jpeg",
     "hasVideo": false,
     "gallery": [
@@ -62,12 +62,12 @@
         "link": "https://player.vimeo.com/video/1106969440"
       }
     ],
-    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+    "fullDescription": "Restore it Yourself Studio (RIY) te invita a ponerte los guantes de un restaurador de arte y adentrarte en el meticuloso mundo de la conservación pictórica. En esta experiencia interactiva, podrás limpiar, reparar y barnizar obras maestras desde la intimidad de tu propio estudio. Cada trazo y cada decisión revelan la delicadeza del oficio, ofreciéndote una nueva forma de apreciar el arte. Ya no eres un espectador, sinoun guardián de su historia. Una inmersión sensorial y educativa en el arte de preservar lo invaluable."
   },
   {
     "id": 4,
     "title": "Inside",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "description": "Videojuego introspectivo donde Alex, atrapado entre realidad y emociones, donde debe resolver acertijos y enfrentar su propia culpa.",
     "image": "/inside.png",
     "hasVideo": false,
     "gallery": [
@@ -83,12 +83,12 @@
         "link": "https://player.vimeo.com/video/1106968496"
       }
     ],
-    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+    "fullDescription": "Encerrado en su departamento, Alex ha dejado de mirar hacia afuera,  porque lo que necesita enfrentar está dentro. Algo ocurrió. Algo que lo empujó al límite. Desde entonces, la realidad ha comenzado a resquebrajarse: sombras que se mueven solas, susurros que no callan y una presencia que parece encarnar todo lo que no ha querido aceptar. \n En INSIDE, acompañas a Alex en un viaje introspectivo entre dos dimensiones que se entrelazan: una física y otra emocional. A través de acertijos, símbolos ocultos y encuentros con su propia culpa, deberá enfrentarse a lo que más teme: a sí mismo."
   },
   {
     "id": 5,
     "title": "Panoptic",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nunc augue, feugiat in blandit id",
+    "description": "Videojuego de misterio donde una periodista explora una prisión abandonada, enfrentando presencias ocultas y el precio de buscar la verdad.",
     "image": "/panoptic.jpeg",
     "hasVideo": false,
     "gallery": [
@@ -107,6 +107,6 @@
         "link": "https://player.vimeo.com/video/1106955041"
       }
     ],
-    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin porta arcu, quis consectetur arcu rutrum vel. Pellentesque varius cursus turpis, sit amet placerat dolor suscipit quis. Nunc eu neque nibh."
+    "fullDescription": "Alexandra Reeds no cree en los accidentes. Cuando una serie de desapariciones apunta a una prisión abandonada, decide entrar… sola. Periodista tenaz, acostumbrada a enfrentarse al poder, no busca titulares: busca la verdad. \n Lo que parecía una investigación más se convierte en una experiencia límite. Ecos que responden sin ser llamados, puertas que se cierran solas, y una presencia que la sigue, sin mostrarse. A cada paso, la prisión revela algo: no está vacía. Y nunca lo estuvo. \n Panoptic es una experiencia narrativa. Una historia sobre el precio de buscar respuestas en los lugares donde nadie más se atreve a mirar. Porque cuando decides enfrentar lo que otros ignoran, lo que encuentras… también te encuentra a ti."
   }
 ]

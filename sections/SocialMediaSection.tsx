@@ -37,20 +37,20 @@ export default function SocialMediaSection({ AnimatedParticles }: SocialMediaSec
           backgroundType="radial"
         />
       </div>
-      <div className="container mx-auto px-4 text-center relative z-10">
+      <div className="container mx-auto px-6 text-center relative z-10">
         <h3 className="text-2xl font-bold tracking-wide mb-8 animate-slide-up font-heading">SÍGUENOS EN REDES</h3>
-        <div className="flex justify-center space-x-6">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6">
           {socialLinks.map((social, index) => (
             <Link
               key={index}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white hover:bg-[#FCDD2F] text-black hover:text-black p-4 rounded-full transition-all duration-500 transform hover:scale-125 hover:rotate-12 shadow-lg hover:shadow-2xl animate-bounce-in"
+              className="bg-white hover:bg-[#FCDD2F] text-black hover:text-black p-3 sm:p-4 rounded-full transition-all duration-500 transform hover:scale-125 hover:rotate-12 shadow-lg hover:shadow-2xl animate-bounce-in m-2"
               aria-label={social.name}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {social.icon}
+              <span className="block w-6 h-6 sm:w-6 sm:h-6">{social.icon}</span>
             </Link>
           ))}
         </div>

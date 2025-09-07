@@ -134,11 +134,11 @@ body, p, a, button, input, textarea, select, li, span, div:not(.font-heading) {
 
 @layer utilities {
   .animate-scroll {
-    animation: scroll 30s linear infinite;
+    animation: scroll 20s linear infinite;
   }
 
   .animate-scroll-single {
-    animation: scroll-single 45s linear infinite;
+    animation: scroll-single 30s linear infinite;
   }
 
   .hover\:pause:hover {

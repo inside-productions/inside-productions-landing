@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-3 mb-4 md:mb-0 group">
             <Image
-              src="/logo-inside.svg"
+              src="/logo-inside-white.jpeg"
               alt="Inside Productions Logo"
               width={40}
               height={40}
