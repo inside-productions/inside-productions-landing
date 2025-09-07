@@ -48,18 +48,18 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
   // Auto-play carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentProject((prev) => (prev + 1) % Math.max(1, projects.length - 2))
+      setCurrentProject((prev) => (prev + 1) % projects.length)
     }, 4000) // Change every 4 seconds
 
     return () => clearInterval(interval)
   }, [projects.length])
 
   const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % Math.max(1, projects.length - 2))
+    setCurrentProject((prev) => (prev + 1) % projects.length)
   }
 
   const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + Math.max(1, projects.length - 2)) % Math.max(1, projects.length - 2))
+    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length)
   }
 
   const openProjectModal = (project: Project) => {
@@ -87,7 +87,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
     }
   }
   return (
-    <section id="gallery" className="h-screen py-20 bg-black text-white relative overflow-hidden flex items-center">
+    <section id="gallery" className="min-h-screen py-20 bg-black text-white relative overflow-hidden flex items-center">
       {/* Dynamic sparks and energy */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatedParticles 
@@ -105,13 +105,13 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
         </h2>
         <div className="relative max-w-7xl mx-auto">
           {/* Carousel Container */}
-          <div className="overflow-hidden rounded-2xl shadow-2xl glass-effect">
+          <div className="overflow-hidden rounded-2xl shadow-2xl glass-effect w-full sm:w-4/5 md:w-3/4 lg:w-2/3 mx-auto">
             <div
               className="flex transition-transform duration-700 ease-out"
-              style={{ transform: `translateX(-${currentProject * (100 / 3)}%)` }}
+              style={{ transform: `translateX(-${currentProject * 100}%)` }}
             >
               {projects.map((project) => (
-                <div key={project.id} className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                <div key={project.id} className="w-full flex-shrink-0 px-2 sm:px-3 md:px-4">
                   <Card
                     className="border-none shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 hover:rotate-1 rounded-2xl overflow-hidden bg-white h-full group cursor-pointer"
                     onClick={() => openProjectModal(project)}
@@ -156,22 +156,20 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
           {/* Navigation Arrows */}
           <button
             onClick={prevProject}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:rotate-12"
-            disabled={currentProject === 0}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 sm:-translate-x-4 md:-translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:rotate-12"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextProject}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:-rotate-12"
-            disabled={currentProject >= Math.max(1, projects.length - 3)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1 sm:translate-x-4 md:translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:-rotate-12"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: Math.max(1, projects.length - 2) }).map((_, index) => (
+            {Array.from({ length: projects.length }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentProject(index)}
