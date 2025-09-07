@@ -37,6 +37,7 @@ interface GallerySectionProps {
 export default function GallerySection({ AnimatedParticles }: GallerySectionProps) {
   const [projects, setProjects] = useState<Project[]>([])
   const [currentProject, setCurrentProject] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
   const [showProjectModal, setShowProjectModal] = useState(false)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [currentModalImage, setCurrentModalImage] = useState(0)
@@ -45,21 +46,44 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
     setProjects(projectsData)
   }, [])
 
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkIfMobile()
+    window.addEventListener('resize', checkIfMobile)
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile)
+    }
+  }, [])
+
+  // Calculate visible items based on screen size
+  const getVisibleItems = () => {
+    if (isMobile) return 1
+    return 3
+  }
+
+  // Calculate max index
+  const maxIndex = Math.max(0, projects.length - getVisibleItems())
+
   // Auto-play carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentProject((prev) => (prev + 1) % projects.length)
+      setCurrentProject((prev) => (prev + 1) % (maxIndex + 1))
     }, 4000) // Change every 4 seconds
 
     return () => clearInterval(interval)
-  }, [projects.length])
+  }, [projects.length, maxIndex])
 
   const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length)
+    setCurrentProject((prev) => Math.min(maxIndex, prev + 1))
   }
 
   const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length)
+    setCurrentProject((prev) => Math.max(0, prev - 1))
   }
 
   const openProjectModal = (project: Project) => {
@@ -105,13 +129,17 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
         </h2>
         <div className="relative max-w-7xl mx-auto">
           {/* Carousel Container */}
-          <div className="overflow-hidden rounded-2xl shadow-2xl glass-effect w-full sm:w-4/5 md:w-3/4 lg:w-2/3 mx-auto">
+          <div className="overflow-hidden rounded-2xl shadow-2xl glass-effect">
             <div
               className="flex transition-transform duration-700 ease-out"
-              style={{ transform: `translateX(-${currentProject * 100}%)` }}
+              style={{ 
+                transform: isMobile
+                  ? `translateX(-${currentProject * 100}%)`
+                  : `translateX(-${currentProject * (100 / getVisibleItems())}%)`
+              }}
             >
               {projects.map((project) => (
-                <div key={project.id} className="w-full flex-shrink-0 px-2 sm:px-3 md:px-4">
+                <div key={project.id} className={`${isMobile ? 'w-full' : 'w-full md:w-1/2 lg:w-1/3'} flex-shrink-0 px-4`}>
                   <Card
                     className="border-none shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 hover:rotate-1 rounded-2xl overflow-hidden bg-white h-full group cursor-pointer"
                     onClick={() => openProjectModal(project)}
@@ -156,20 +184,22 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
           {/* Navigation Arrows */}
           <button
             onClick={prevProject}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 sm:-translate-x-4 md:-translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:rotate-12"
+            disabled={currentProject === 0}
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 md:-translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:rotate-12 ${currentProject === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextProject}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1 sm:translate-x-4 md:translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:-rotate-12"
+            disabled={currentProject >= maxIndex}
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 md:translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:-rotate-12 ${currentProject >= maxIndex ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: projects.length }).map((_, index) => (
+            {Array.from({ length: maxIndex + 1 }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentProject(index)}
