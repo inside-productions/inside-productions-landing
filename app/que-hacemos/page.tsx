@@ -1,21 +1,19 @@
 "use client"
 
-// Import sections
 import Header from "@/sections/Header"
-import HeroSection from "@/sections/HeroSection"
+import ServicesSection from "@/sections/ServicesSection"
 import Footer from "@/sections/Footer"
-
-// Import components
 import AnimatedParticles from "@/components/AnimatedParticles"
 
-export default function InsideProductionsLanding() {
+export default function QueHacemosPage() {
   return (
     <div className="min-h-screen bg-white text-black font-sans overflow-x-hidden">
       <Header />
       
-      <HeroSection AnimatedParticles={AnimatedParticles} />
+      <ServicesSection AnimatedParticles={AnimatedParticles} />
       
       <Footer />
     </div>
   )
 }
+

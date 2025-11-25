@@ -1,9 +1,17 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Badge } from "@/components/badge"
-import { Eye } from "lucide-react"
-import TeamModal from "@/sections/TeamModal"
+import Image from "next/image"
+import teamMembersData from "@/data/teamMembers.json"
+
+interface TeamMember {
+  id: number
+  name: string
+  position: string
+  description: string
+  image: string
+}
 
 interface AboutSectionProps {
   AnimatedParticles: React.ComponentType<{
@@ -17,13 +25,13 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
-  const [showTeamModal, setShowTeamModal] = useState(false)
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
 
-  const closeModal = () => {
-    setShowTeamModal(false)
-  }
+  useEffect(() => {
+    setTeamMembers(teamMembersData)
+  }, [])
   return (
-    <section id="about" className="min-h-screen py-20 bg-white relative overflow-hidden flex items-center">
+    <section id="about" className="min-h-screen py-20 bg-white relative overflow-hidden">
       {/* Dynamic sparks background */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatedParticles 
@@ -36,18 +44,11 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
         />
       </div>
       <div className="container mx-auto px-4 relative z-10 w-full">
-        <div className="flex items-center justify-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center animate-slide-up mr-4 font-heading">
-            QUIÉNES SOMOS
-          </h2>
-          <button
-            onClick={() => setShowTeamModal(true)}
-            className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black p-3 rounded-full transition-all duration-300 transform hover:scale-110 hover:rotate-12 shadow-lg"
-          >
-            <Eye className="w-6 h-6" />
-          </button>
-        </div>
-        <div className="max-w-4xl mx-auto text-center px-4">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center animate-slide-up mb-16 font-heading">
+          QUIÉNES SOMOS
+        </h2>
+        
+        <div className="max-w-4xl mx-auto text-center px-4 mb-16">
           <h3 className="text-3xl font-bold tracking-wide mb-8 hover:text-[#FCDD2F] transition-colors duration-500 animate-slide-up-delay font-heading">
             INNOVACIÓN EN CADA PIXEL
           </h3>
@@ -72,12 +73,38 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
             ))}
           </div>
         </div>
-      </div>
 
-      <TeamModal 
-        showTeamModal={showTeamModal}
-        closeModals={closeModal}
-      />
+        {/* Team Section */}
+        <div className="max-w-6xl mx-auto px-4 mt-20">
+          <h3 className="text-3xl md:text-4xl font-bold tracking-wider text-center mb-12 text-black font-heading">
+            NUESTRO EQUIPO
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <div 
+                key={member.id} 
+                className="text-center group hover:transform hover:scale-105 transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative mb-4 mx-auto w-48 h-48">
+                  <Image
+                    src={member.image || "/placeholder.svg"}
+                    alt={member.name}
+                    width={192}
+                    height={192}
+                    className="w-48 h-48 rounded-full object-cover border-4 border-transparent group-hover:border-[#FCDD2F] transition-all duration-300"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-black mb-2 font-heading group-hover:text-[#FCDD2F] transition-colors duration-300">
+                  {member.name}
+                </h4>
+                <p className="text-[#FCDD2F] font-semibold mb-3">{member.position}</p>
+                <p className="text-gray-600 text-sm leading-relaxed px-2">{member.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

@@ -33,7 +33,7 @@ export default function VideoSection({ AnimatedParticles }: VideoSectionProps) {
         </h2>
         <div className="w-full max-w-4xl lg:max-w-[1100px] xl:max-w-[1200px] mx-auto px-0 md:px-4">
           <VimeoPlayer
-            videoId="1106243202"
+            videoId="1118868855"
             title="INSIDE PRODUCTIONS DEMO REEL 2025"
             className="shadow-2xl hover:shadow-[#FCDD2F]/20 transition-all duration-500"
           />
