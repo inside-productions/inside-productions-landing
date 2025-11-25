@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Inside Productions',
+  title: 'Inside Productions',
     description: 'Creamos videojuegos, y experiencias de realidad Virtual y Aumentada para capacitar, innovar y generar más interacción.',
     images: ['/hero-background.png'],
   },

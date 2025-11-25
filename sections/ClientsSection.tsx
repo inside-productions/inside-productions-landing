@@ -22,33 +22,41 @@ interface ClientsSectionProps {
 
 export default function ClientsSection({ AnimatedParticles }: ClientsSectionProps) {
   const [clients, setClients] = useState<Client[]>([])
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   
   useEffect(() => {
-    setClients(clientsData)
+    // Duplicamos los clientes para crear un efecto infinito
+    setClients([...clientsData, ...clientsData, ...clientsData])
   }, [])
   
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current
-      const newPosition = Math.max(0, scrollPosition - 350)
-      container.scrollTo({ left: newPosition, behavior: 'smooth' })
-      setScrollPosition(newPosition)
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!scrollContainerRef.current || isPaused) return
+    
+    const container = scrollContainerRef.current
+    const scrollSpeed = 1 // pixels per frame
+    let animationFrameId: number
+    
+    const scroll = () => {
+      if (container) {
+        container.scrollLeft += scrollSpeed
+        
+        // Reset scroll cuando llegamos al final del primer set de clientes
+        const maxScroll = container.scrollWidth / 3
+        if (container.scrollLeft >= maxScroll) {
+          container.scrollLeft = 0
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll)
     }
-  }
-  
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current
-      const newPosition = Math.min(
-        container.scrollWidth - container.clientWidth,
-        scrollPosition + 350
-      )
-      container.scrollTo({ left: newPosition, behavior: 'smooth' })
-      setScrollPosition(newPosition)
+    
+    animationFrameId = requestAnimationFrame(scroll)
+    
+    return () => {
+      cancelAnimationFrame(animationFrameId)
     }
-  }
+  }, [isPaused])
   return (
     <section id="clients" className="h-screen py-20 bg-white relative overflow-hidden flex items-center">
       {/* Sparks and energy field */}
@@ -66,13 +74,24 @@ export default function ClientsSection({ AnimatedParticles }: ClientsSectionProp
         <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-16 animate-slide-up font-heading">
           CONFÍAN EN NOSOTROS
         </h2>
-        <div className="relative">
-          <div className="overflow-hidden" ref={scrollContainerRef}>
-            <div className="flex space-x-12 px-4 pb-4 snap-x snap-mandatory">
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div 
+            className="overflow-hidden scrollbar-hide" 
+            ref={scrollContainerRef}
+            style={{ 
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <div className="flex space-x-12 px-4 pb-4">
               {clients.map((client, index) => (
                 <div
                   key={`${client.name}-${index}`}
-                  className="flex-shrink-0 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-md border border-[#FCDD2F]/20 hover:shadow-xl hover:scale-105 hover:-rotate-2 transition-all duration-300 glass-effect snap-center"
+                  className="flex-shrink-0 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-md border border-[#FCDD2F]/20 hover:shadow-xl hover:scale-105 hover:-rotate-2 transition-all duration-300 glass-effect"
                   style={{ width: "320px", height: "180px" }}
                 >
                   <div className="w-full h-full flex flex-col items-center justify-center space-y-4">
@@ -90,28 +109,14 @@ export default function ClientsSection({ AnimatedParticles }: ClientsSectionProp
               ))}
             </div>
           </div>
-          
-          {/* Navigation Controls */}
-          <button 
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 md:-translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:rotate-12"
-            aria-label="Anterior cliente"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button 
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 md:translate-x-6 bg-white hover:bg-[#FCDD2F] text-black hover:text-black w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10 hover:scale-110 hover:-rotate-12"
-            aria-label="Siguiente cliente"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
       </div>
+      
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   )
 }
