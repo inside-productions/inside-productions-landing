@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     description: 'Creamos videojuegos, y experiencias de realidad Virtual y Aumentada para capacitar, innovar y generar más interacción.',
     images: [
       {
-        url: '/hero-background.png',
+        url: '/logo-inside-white.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Persona usando VR Headset, jugando uno de nuestros juegos VR (Trouble Train, RIY)',
+        alt: 'Inside Productions - Desarrollo de videojuegos, Realidad Virtual y Aumentada',
       }
     ],
     locale: 'es_MX',
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-  title: 'Inside Productions',
+    title: 'Inside Productions',
     description: 'Creamos videojuegos, y experiencias de realidad Virtual y Aumentada para capacitar, innovar y generar más interacción.',
-    images: ['/hero-background.png'],
+    images: ['/logo-inside-white.jpeg'],
   },
 }
 
