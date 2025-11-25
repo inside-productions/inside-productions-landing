@@ -1,16 +1,16 @@
 "use client"
 
 import { Button } from "@/components/button"
+import Link from "next/link"
 
 interface HeroSectionProps {
-  scrollToSection: (sectionId: string) => void
   AnimatedParticles: React.ComponentType<{
     count: number
     className?: string
   }>
 }
 
-export default function HeroSection({ scrollToSection, AnimatedParticles }: HeroSectionProps) {
+export default function HeroSection({ AnimatedParticles }: HeroSectionProps) {
   return (
     <section
       className="relative h-screen flex items-center justify-center overflow-hidden"
@@ -69,12 +69,13 @@ export default function HeroSection({ scrollToSection, AnimatedParticles }: Hero
           </div>
         </div>
         
-        <Button
-          onClick={() => scrollToSection("video")}
-          className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
-        >
-          <span className="relative z-10">Ver Demo</span>
-        </Button>
+        <Link href="/demo-reel">
+          <Button
+            className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
+          >
+            <span className="relative z-10">Ver Demo</span>
+          </Button>
+        </Link>
       </div>
     </section>
   )

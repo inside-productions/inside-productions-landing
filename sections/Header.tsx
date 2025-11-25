@@ -2,16 +2,14 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 
-interface HeaderProps {
-  scrollToSection: (sectionId: string) => void
-  scrollToTop: () => void
-}
-
-export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   // Handle scrolling effect
   useEffect(() => {
@@ -24,16 +22,15 @@ export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
   }, [])
 
   const menuItems = [
-    { label: "Demo Reel", id: "video" },
-    { label: "Qué hacemos", id: "services" },
-    { label: "Quiénes somos", id: "about" },
-    { label: "Galería", id: "gallery" },
-    { label: "Clientes", id: "clients" },
-    { label: "Contacto", id: "contact" },
+    { label: "Demo Reel", href: "/demo-reel" },
+    { label: "Qué hacemos", href: "/que-hacemos" },
+    { label: "Quiénes somos", href: "/quienes-somos" },
+    { label: "Galería", href: "/galeria" },
+    { label: "Clientes", href: "/clientes" },
+    { label: "Contacto", href: "/contacto" },
   ]
 
-  const handleMenuItemClick = (id: string) => {
-    scrollToSection(id)
+  const handleMenuItemClick = () => {
     setMobileMenuOpen(false)
   }
 
@@ -41,7 +38,7 @@ export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 ${scrolled ? 'bg-white shadow-2xl' : 'bg-white/95 backdrop-blur-md'} transition-all duration-500`}>
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3 cursor-pointer group" onClick={scrollToTop}>
+          <Link href="/" className="flex items-center space-x-3 cursor-pointer group">
             <Image
               src="/logo-inside-black.png"
               alt="Inside Productions Logo"
@@ -52,19 +49,19 @@ export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
             <div className="text-xl md:text-2xl font-bold tracking-wider group-hover:text-[#FCDD2F] transition-all duration-500 ease-out font-heading">
               INSIDE PRODUCTIONS
             </div>
-          </div>
+          </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="relative hover:border-b-2 hover:border-[#FCDD2F] transition-all duration-300 pb-1 group"
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative hover:border-b-2 hover:border-[#FCDD2F] transition-all duration-300 pb-1 group ${pathname === item.href ? 'border-b-2 border-[#FCDD2F]' : ''}`}
               >
                 <span className="relative z-10">{item.label}</span>
                 <div className="absolute inset-0 bg-[#FCDD2F]/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-lg -z-10"></div>
-              </button>
+              </Link>
             ))}
           </nav>
           
@@ -82,7 +79,7 @@ export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col">
           <div className="container mx-auto px-4 py-6 flex justify-between items-center border-b border-gray-200">
-            <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3" onClick={handleMenuItemClick}>
               <Image
                 src="/logo-inside-black.png"
                 alt="Inside Productions Logo"
@@ -93,7 +90,7 @@ export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
               <div className="text-xl font-bold tracking-wider font-heading">
                 INSIDE PRODUCTIONS
               </div>
-            </div>
+            </Link>
             <button 
               onClick={() => setMobileMenuOpen(false)}
               className="p-2 bg-[#FCDD2F] rounded-md shadow-md"
@@ -104,13 +101,14 @@ export default function Header({ scrollToSection, scrollToTop }: HeaderProps) {
           
           <nav className="flex flex-col items-center justify-center flex-grow">
             {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleMenuItemClick(item.id)}
-                className="py-4 text-xl font-medium w-full text-center hover:bg-[#FCDD2F]/10 transition-colors duration-300"
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={handleMenuItemClick}
+                className={`py-4 text-xl font-medium w-full text-center hover:bg-[#FCDD2F]/10 transition-colors duration-300 ${pathname === item.href ? 'bg-[#FCDD2F]/20' : ''}`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
         </div>
