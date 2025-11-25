@@ -35,12 +35,15 @@ export const metadata: Metadata = {
     'Experiencia Interactiva',
     'Querétaro'
   ],
+  metadataBase: new URL('https://insideproductions.mx'),
   openGraph: {
     title: 'Inside Productions',
     description: 'Creamos videojuegos, y experiencias de realidad Virtual y Aumentada para capacitar, innovar y generar más interacción.',
+    url: 'https://insideproductions.mx',
+    siteName: 'Inside Productions',
     images: [
       {
-        url: '/logo-inside-white.jpeg',
+        url: 'https://insideproductions.mx/logo-inside-white.jpeg',
         width: 1200,
         height: 630,
         alt: 'Inside Productions - Desarrollo de videojuegos, Realidad Virtual y Aumentada',
@@ -53,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Inside Productions',
     description: 'Creamos videojuegos, y experiencias de realidad Virtual y Aumentada para capacitar, innovar y generar más interacción.',
-    images: ['/logo-inside-white.jpeg'],
+    images: ['https://insideproductions.mx/logo-inside-white.jpeg'],
   },
 }
 
