@@ -2,6 +2,7 @@
 
 import Header from "@/sections/Header"
 import ServicesSection from "@/sections/ServicesSection"
+import SEOContent from "@/components/SEOContent"
 import Footer from "@/sections/Footer"
 import AnimatedParticles from "@/components/AnimatedParticles"
 
@@ -11,6 +12,8 @@ export default function QueHacemosPage() {
       <Header />
       
       <ServicesSection AnimatedParticles={AnimatedParticles} />
+      
+      <SEOContent />
       
       <Footer />
     </div>

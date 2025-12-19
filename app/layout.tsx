@@ -36,6 +36,14 @@ export const metadata: Metadata = {
     'Querétaro'
   ],
   metadataBase: new URL('https://insideproductions.mx'),
+  icons: {
+    icon: [
+      { url: '/logo-inside-black.png', type: 'image/png' },
+      { url: '/logo-inside-white.jpeg', type: 'image/jpeg' },
+    ],
+    apple: '/logo-inside-white.jpeg',
+    shortcut: '/logo-inside-black.png',
+  },
   openGraph: {
     title: 'Inside Productions',
     description: 'Creamos videojuegos, y experiencias de realidad Virtual y Aumentada para capacitar, innovar y generar más interacción.',
