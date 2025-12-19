@@ -82,7 +82,7 @@ export default function ClientsSection({ AnimatedParticles }: ClientsSectionProp
           <div 
             className="overflow-hidden scrollbar-hide" 
             ref={scrollContainerRef}
-            style={{ 
+            style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
             }}

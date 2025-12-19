@@ -1,8 +1,10 @@
 import { Metadata } from 'next'
 import Header from "@/sections/Header"
 import HeroClient from "@/components/HeroClient"
-import SEOContent from "@/components/SEOContent"
 import Footer from "@/sections/Footer"
+import VideoSection from "@/sections/VideoSection"
+import ClientsSection from "@/sections/ClientsSection"
+import AnimatedParticles from "@/components/AnimatedParticles"
 
 export const metadata: Metadata = {
   title: 'Inside Productions | Desarrollo de Videojuegos, Realidad Virtual y Aumentada en México',
@@ -83,7 +85,9 @@ export default function InsideProductionsLanding() {
         
         <HeroClient />
         
-        <SEOContent />
+        <VideoSection AnimatedParticles={AnimatedParticles} />
+        
+        <ClientsSection AnimatedParticles={AnimatedParticles} />
         
         <Footer />
       </div>

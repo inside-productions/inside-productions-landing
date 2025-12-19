@@ -22,12 +22,10 @@ export default function Header() {
   }, [])
 
   const menuItems = [
-    { label: "Demo Reel", href: "/demo-reel" },
     { label: "Qué hacemos", href: "/que-hacemos" },
     { label: "Quiénes somos", href: "/quienes-somos" },
     { label: "Galería", href: "/galeria" },
-    { label: "Clientes", href: "/clientes" },
-    { label: "Contacto", href: "/contacto" },
+    { label: "Contáctanos", href: "/contacto" },
   ]
 
   const handleMenuItemClick = () => {

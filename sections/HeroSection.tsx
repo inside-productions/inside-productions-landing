@@ -70,11 +70,11 @@ export default function HeroSection({ AnimatedParticles }: HeroSectionProps) {
         </div>
         
         <Link href="/demo-reel">
-          <Button
-            className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
-          >
-            <span className="relative z-10">Ver Demo</span>
-          </Button>
+        <Button
+          className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
+        >
+          <span className="relative z-10">Ver Demo</span>
+        </Button>
         </Link>
       </div>
     </section>

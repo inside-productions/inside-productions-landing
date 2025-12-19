@@ -21,8 +21,6 @@ const nextConfig = {
   },
   // Compresión gzip
   compress: true,
-  // Optimización de fuentes
-  optimizeFonts: true,
   // Configuración de headers para cache
   async headers() {
     return [
@@ -40,7 +38,6 @@ const nextConfig = {
   // Performance
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
 }
 
 export default nextConfig
