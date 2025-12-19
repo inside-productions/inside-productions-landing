@@ -98,7 +98,7 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
       </div>
       <div className="container mx-auto px-4 relative z-10 w-full">
         <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-16 animate-slide-up font-heading">
-          CONTACTO
+          COTIZA CON NOSOTROS
         </h2>
         <div className="max-w-2xl mx-auto">
           {isSubmitted ? (

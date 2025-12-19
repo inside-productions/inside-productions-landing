@@ -45,8 +45,8 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
       </div>
       <div className="container mx-auto px-4 relative z-10 w-full">
         <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center animate-slide-up mb-16 font-heading">
-          QUIÉNES SOMOS
-        </h2>
+            QUIÉNES SOMOS
+          </h2>
         
         <div className="max-w-4xl mx-auto text-center px-4 mb-16">
           <h3 className="text-3xl font-bold tracking-wide mb-8 hover:text-[#FCDD2F] transition-colors duration-500 animate-slide-up-delay font-heading">
