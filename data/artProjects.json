@@ -1,0 +1,244 @@
+{
+  "projects2D": [
+    {
+      "id": "1",
+      "name": "Cucaracha Vaquera",
+      "mainImage": "/cucaracha-vaquera.jpeg",
+      "description": "Juego de realidad aumentada donde una cucaracha atrapada en un televisor vive aventuras en el Viejo Oeste.",
+      "bulletPoints": [
+        "Concept Art & Ilustración",
+        "Diseño de personajes 2D",
+        "Fondos y escenarios",
+        "Assets de UI/UX"
+      ],
+      "assets": [
+        "/cucaracha-vaquera-1.png",
+        "/cucaracha-vaquera-2.png",
+        "/cucaracha-vaquera-3.png",
+        "/cucaracha-vaquera-4.png"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Trouble Train",
+      "mainImage": "/trouble-train.jpeg",
+      "description": "Experiencia VR contra reloj en un tren fuera de control en el Viejo Oeste.",
+      "bulletPoints": [
+        "Storyboards completos",
+        "Diseño de props 2D",
+        "Ilustraciones promocionales",
+        "Arte conceptual"
+      ],
+      "assets": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg",
+        "/trouble-train-4.jpg",
+        "/trouble-train-5.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Restore It Yourself Studio",
+      "mainImage": "/restore-it-yourself-studio.jpeg",
+      "description": "Experiencia interactiva de restauración de arte.",
+      "bulletPoints": [
+        "Diseño de interfaz",
+        "Ilustraciones de obras",
+        "Iconografía personalizada",
+        "Elementos decorativos"
+      ],
+      "assets": [
+        "/restore-it-yourself-studio-1.png",
+        "/restore-it-yourself-studio-2.png",
+        "/restore-it-yourself-studio-3.png",
+        "/restore-it-yourself-studio-4.png"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Inside",
+      "mainImage": "/inside.png",
+      "description": "Videojuego introspectivo entre realidad y emociones.",
+      "bulletPoints": [
+        "Character design",
+        "Environment art",
+        "Paleta de colores",
+        "Sprites y animaciones"
+      ],
+      "assets": [
+        "/inside-1.png",
+        "/inside-2.png",
+        "/inside-3.png",
+        "/inside-4.png",
+        "/inside-5.png"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Panoptic",
+      "mainImage": "/panoptic.jpeg",
+      "description": "Videojuego de misterio en una prisión abandonada.",
+      "bulletPoints": [
+        "Arte atmosférico",
+        "Diseño de escenas",
+        "Texturas y materiales",
+        "Elementos narrativos"
+      ],
+      "assets": [
+        "/panoptic-1.png",
+        "/panoptic-2.png",
+        "/panoptic-3.png",
+        "/panoptic-4.png",
+        "/panoptic-5.png",
+        "/panoptic-6.png",
+        "/panoptic-7.png",
+        "/panoptic-8.png"
+      ]
+    }
+  ],
+  "projects3D": [
+    {
+      "id": "1",
+      "name": "Cucaracha Vaquera",
+      "mainImage": "/cucaracha-vaquera.jpeg",
+      "description": "Juego de realidad aumentada con modelado 3D completo.",
+      "bulletPoints": [
+        "HP & LP Modelling",
+        "Texturizado PBR",
+        "Rigging & Skinning",
+        "Props y escenarios"
+      ],
+      "assets": [
+        "/cucaracha-vaquera-1.png",
+        "/cucaracha-vaquera-2.png",
+        "/cucaracha-vaquera-3.png",
+        "/cucaracha-vaquera-4.png"
+      ],
+      "vfx": [
+        "/cucaracha-vaquera-1.png",
+        "/cucaracha-vaquera-2.png"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Trouble Train",
+      "mainImage": "/trouble-train.jpeg",
+      "description": "Experiencia VR con assets 3D de alta calidad.",
+      "bulletPoints": [
+        "Modelado de vehículos",
+        "Escenarios detallados",
+        "Optimización para VR",
+        "Assets interactivos"
+      ],
+      "assets": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg",
+        "/trouble-train-4.jpg",
+        "/trouble-train-5.jpg"
+      ],
+      "vfx": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Restore It Yourself Studio",
+      "mainImage": "/restore-it-yourself-studio.jpeg",
+      "description": "Modelos 3D para experiencia interactiva.",
+      "bulletPoints": [
+        "Modelado de herramientas",
+        "Objetos de estudio",
+        "Iluminación realista",
+        "Materiales físicos"
+      ],
+      "assets": [
+        "/restore-it-yourself-studio-1.png",
+        "/restore-it-yourself-studio-2.png",
+        "/restore-it-yourself-studio-3.png",
+        "/restore-it-yourself-studio-4.png"
+      ],
+      "vfx": [
+        "/restore-it-yourself-studio-1.png",
+        "/restore-it-yourself-studio-2.png"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Inside",
+      "mainImage": "/inside.png",
+      "description": "Videojuego con ambientes 3D inmersivos.",
+      "bulletPoints": [
+        "Environments 3D",
+        "Character modeling",
+        "Lighting design",
+        "Post-procesado"
+      ],
+      "assets": [
+        "/inside-1.png",
+        "/inside-2.png",
+        "/inside-3.png",
+        "/inside-4.png",
+        "/inside-5.png"
+      ],
+      "vfx": [
+        "/inside-1.png",
+        "/inside-2.png",
+        "/inside-3.png"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Panoptic",
+      "mainImage": "/panoptic.jpeg",
+      "description": "Escenarios 3D detallados para terror psicológico.",
+      "bulletPoints": [
+        "Arquitectura modular",
+        "Props detallados",
+        "Efectos de partículas",
+        "Shaders personalizados"
+      ],
+      "assets": [
+        "/panoptic-1.png",
+        "/panoptic-2.png",
+        "/panoptic-3.png",
+        "/panoptic-4.png",
+        "/panoptic-5.png",
+        "/panoptic-6.png",
+        "/panoptic-7.png",
+        "/panoptic-8.png"
+      ],
+      "vfx": [
+        "/panoptic-1.png",
+        "/panoptic-2.png",
+        "/panoptic-3.png",
+        "/panoptic-4.png"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Trouble Train - VR Experience",
+      "mainImage": "/trouble-train.jpeg",
+      "description": "Versión VR optimizada del tren.",
+      "bulletPoints": [
+        "LODs optimizados",
+        "Collision meshes",
+        "Interactividad VR",
+        "Performance tuning"
+      ],
+      "assets": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg",
+        "/trouble-train-4.jpg"
+      ],
+      "vfx": [
+        "/trouble-train-4.jpg",
+        "/trouble-train-5.jpg"
+      ]
+    }
+  ]
+}

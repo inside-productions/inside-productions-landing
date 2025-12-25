@@ -25,6 +25,7 @@ export default function Header() {
     { label: "Qué hacemos", href: "/que-hacemos" },
     { label: "Quiénes somos", href: "/quienes-somos" },
     { label: "Galería", href: "/galeria" },
+    { label: "Arte", href: "/arte" },
     { label: "Contáctanos", href: "/contacto" },
   ]
 
