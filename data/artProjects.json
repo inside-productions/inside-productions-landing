@@ -4,10 +4,13 @@
       "id": "1",
       "name": "Cucaracha Vaquera",
       "mainImage": "/cucaracha-vaquera.jpeg",
-      "video": {
-        "title": "Cucaracha Vaquera - Videojuego AR",
-        "link": "https://player.vimeo.com/video/1106949178"
-      },
+      "description": "Juego de realidad aumentada donde una cucaracha atrapada en un televisor vive aventuras en el Viejo Oeste.",
+      "bulletPoints": [
+        "Concept Art & Ilustración",
+        "Diseño de personajes 2D",
+        "Fondos y escenarios",
+        "Assets de UI/UX"
+      ],
       "assets": [
         "/cucaracha-vaquera-1.png",
         "/cucaracha-vaquera-2.png",
@@ -19,10 +22,13 @@
       "id": "2",
       "name": "Trouble Train",
       "mainImage": "/trouble-train.jpeg",
-      "video": {
-        "title": "Trouble Train - Trailer Videojuego VR",
-        "link": "https://player.vimeo.com/video/1106970227"
-      },
+      "description": "Experiencia VR contra reloj en un tren fuera de control en el Viejo Oeste.",
+      "bulletPoints": [
+        "Storyboards completos",
+        "Diseño de props 2D",
+        "Ilustraciones promocionales",
+        "Arte conceptual"
+      ],
       "assets": [
         "/trouble-train-1.jpg",
         "/trouble-train-2.jpg",
@@ -35,10 +41,13 @@
       "id": "3",
       "name": "Restore It Yourself Studio",
       "mainImage": "/restore-it-yourself-studio.jpeg",
-      "video": {
-        "title": "Restore It Yourself Studio - Experiencia Interactiva",
-        "link": "https://player.vimeo.com/video/1106969440"
-      },
+      "description": "Experiencia interactiva de restauración de arte.",
+      "bulletPoints": [
+        "Diseño de interfaz",
+        "Ilustraciones de obras",
+        "Iconografía personalizada",
+        "Elementos decorativos"
+      ],
       "assets": [
         "/restore-it-yourself-studio-1.png",
         "/restore-it-yourself-studio-2.png",
@@ -50,10 +59,13 @@
       "id": "4",
       "name": "Inside",
       "mainImage": "/inside.png",
-      "video": {
-        "title": "Inside - Videojuego",
-        "link": "https://player.vimeo.com/video/1106968496"
-      },
+      "description": "Videojuego introspectivo entre realidad y emociones.",
+      "bulletPoints": [
+        "Character design",
+        "Environment art",
+        "Paleta de colores",
+        "Sprites y animaciones"
+      ],
       "assets": [
         "/inside-1.png",
         "/inside-2.png",
@@ -66,10 +78,13 @@
       "id": "5",
       "name": "Panoptic",
       "mainImage": "/panoptic.jpeg",
-      "video": {
-        "title": "Panoptic - Experiencia Interactiva",
-        "link": "https://player.vimeo.com/video/1106955041"
-      },
+      "description": "Videojuego de misterio en una prisión abandonada.",
+      "bulletPoints": [
+        "Arte atmosférico",
+        "Diseño de escenas",
+        "Texturas y materiales",
+        "Elementos narrativos"
+      ],
       "assets": [
         "/panoptic-1.png",
         "/panoptic-2.png",
@@ -87,10 +102,13 @@
       "id": "1",
       "name": "Cucaracha Vaquera",
       "mainImage": "/cucaracha-vaquera.jpeg",
-      "video": {
-        "title": "Cucaracha Vaquera - Videojuego AR",
-        "link": "https://player.vimeo.com/video/1106949178"
-      },
+      "description": "Juego de realidad aumentada con modelado 3D completo.",
+      "bulletPoints": [
+        "HP & LP Modelling",
+        "Texturizado PBR",
+        "Rigging & Skinning",
+        "Props y escenarios"
+      ],
       "assets": [
         "/cucaracha-vaquera-1.png",
         "/cucaracha-vaquera-2.png",
@@ -106,10 +124,13 @@
       "id": "2",
       "name": "Trouble Train",
       "mainImage": "/trouble-train.jpeg",
-      "video": {
-        "title": "Trouble Train - Trailer Videojuego VR",
-        "link": "https://player.vimeo.com/video/1106970227"
-      },
+      "description": "Experiencia VR con assets 3D de alta calidad.",
+      "bulletPoints": [
+        "Modelado de vehículos",
+        "Escenarios detallados",
+        "Optimización para VR",
+        "Assets interactivos"
+      ],
       "assets": [
         "/trouble-train-1.jpg",
         "/trouble-train-2.jpg",
@@ -127,10 +148,13 @@
       "id": "3",
       "name": "Restore It Yourself Studio",
       "mainImage": "/restore-it-yourself-studio.jpeg",
-      "video": {
-        "title": "Restore It Yourself Studio - Experiencia Interactiva",
-        "link": "https://player.vimeo.com/video/1106969440"
-      },
+      "description": "Modelos 3D para experiencia interactiva.",
+      "bulletPoints": [
+        "Modelado de herramientas",
+        "Objetos de estudio",
+        "Iluminación realista",
+        "Materiales físicos"
+      ],
       "assets": [
         "/restore-it-yourself-studio-1.png",
         "/restore-it-yourself-studio-2.png",
@@ -146,10 +170,13 @@
       "id": "4",
       "name": "Inside",
       "mainImage": "/inside.png",
-      "video": {
-        "title": "Inside - Videojuego",
-        "link": "https://player.vimeo.com/video/1106968496"
-      },
+      "description": "Videojuego con ambientes 3D inmersivos.",
+      "bulletPoints": [
+        "Environments 3D",
+        "Character modeling",
+        "Lighting design",
+        "Post-procesado"
+      ],
       "assets": [
         "/inside-1.png",
         "/inside-2.png",
@@ -167,10 +194,13 @@
       "id": "5",
       "name": "Panoptic",
       "mainImage": "/panoptic.jpeg",
-      "video": {
-        "title": "Panoptic - Experiencia Interactiva",
-        "link": "https://player.vimeo.com/video/1106955041"
-      },
+      "description": "Escenarios 3D detallados para terror psicológico.",
+      "bulletPoints": [
+        "Arquitectura modular",
+        "Props detallados",
+        "Efectos de partículas",
+        "Shaders personalizados"
+      ],
       "assets": [
         "/panoptic-1.png",
         "/panoptic-2.png",
@@ -192,10 +222,13 @@
       "id": "6",
       "name": "Trouble Train - VR Experience",
       "mainImage": "/trouble-train.jpeg",
-      "video": {
-        "title": "Trouble Train - Videojuego VR",
-        "link": "https://player.vimeo.com/video/1106970930"
-      },
+      "description": "Versión VR optimizada del tren.",
+      "bulletPoints": [
+        "LODs optimizados",
+        "Collision meshes",
+        "Interactividad VR",
+        "Performance tuning"
+      ],
       "assets": [
         "/trouble-train-1.jpg",
         "/trouble-train-2.jpg",

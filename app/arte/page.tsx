@@ -2,22 +2,15 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Check } from "lucide-react"
 import Header from "@/sections/Header"
 import Footer from "@/sections/Footer"
-import { VimeoPlayer } from "@/components/VimeoPlayer"
 import artProjectsData from "@/data/artProjects.json"
 
 const { projects2D, projects3D } = artProjectsData
 
 type Project2D = typeof projects2D[0]
 type Project3D = typeof projects3D[0]
-
-// Helper function to extract Vimeo video ID from URL
-const extractVimeoId = (url: string): string => {
-  const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/)
-  return match ? match[1] : ""
-}
 
 export default function ArtePage() {
   const [activeCategory, setActiveCategory] = useState<"2D" | "3D">("2D")
@@ -173,33 +166,43 @@ export default function ArtePage() {
                 {selectedProject.name}
               </h2>
 
-              {/* Main Content - Image + Gameplay */}
-              <div className="grid md:grid-cols-[1fr_1.5fr] gap-8 mb-12 items-start">
-                {/* Main Image + Description */}
-                <div className="space-y-4">
-                  <div className="aspect-[4/3] max-w-[365px] bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10
-                                  relative group">
-                    <Image
-                      src={selectedProject.mainImage}
-                      alt={selectedProject.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed max-w-[400px]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
+              {/* Main Content - Image + Bullet Points */}
+              <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
+                {/* Main Image */}
+                <div className="aspect-[4/3] bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/10
+                                relative group">
+                  <Image
+                    src={selectedProject.mainImage}
+                    alt={selectedProject.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
-                {/* Gameplay Video */}
-                <div className="w-full">
-                  <VimeoPlayer
-                    key={`video-${selectedProject.id}-${extractVimeoId(selectedProject.video.link)}`}
-                    videoId={extractVimeoId(selectedProject.video.link)}
-                    title={selectedProject.video.title}
-                    className="w-full h-full"
-                  />
+                {/* Description + Bullet Points */}
+                <div className="space-y-6">
+                  <p className="text-gray-300 text-base leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                  
+                  {/* Bullet Points */}
+                  <div className="space-y-4">
+                    {selectedProject.bulletPoints.map((point, index) => (
+                      <div 
+                        key={index}
+                        className="flex items-center gap-4 group"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-[#FCDD2F]/10 border border-[#FCDD2F]/30
+                                        flex items-center justify-center shrink-0
+                                        group-hover:bg-[#FCDD2F]/20 transition-colors">
+                          <Check className="w-4 h-4 text-[#FCDD2F]" />
+                        </div>
+                        <span className="text-white text-lg font-medium">
+                          {point}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -282,4 +285,3 @@ export default function ArtePage() {
     </main>
   )
 }
-
