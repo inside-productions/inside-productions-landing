@@ -25,6 +25,7 @@
     "description": "Experiencia VR contra reloj en un tren fuera de control en el Viejo Oeste; deberás reparar, esquivar obstáculos y tomar decisiones críticas para sobrevivir.",
     "image": "/trouble-train.jpeg",
     "hasVideo": false,
+    "autoSlideshow": true,
     "gallery": [
       "/trouble-train-1.jpg",
       "/trouble-train-2.jpg",
