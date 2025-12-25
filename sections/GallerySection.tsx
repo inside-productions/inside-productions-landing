@@ -209,11 +209,6 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                     <Play className="w-5 h-5" />
                     Ver Proyecto
                   </button>
-                  {featuredProject.videos.length > 0 && (
-                    <span className="text-gray-400 text-sm">
-                      {featuredProject.videos.length} {featuredProject.videos.length === 1 ? 'video' : 'videos'} disponibles
-                    </span>
-                  )}
                 </div>
               </div>
               
@@ -401,18 +396,6 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                     <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                       {selectedProject.fullDescription}
                     </p>
-                  </div>
-                  
-                  {/* Stats */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/5 rounded-xl p-4 text-center border border-white/5">
-                      <div className="text-2xl font-bold text-[#FCDD2F]">{selectedProject.gallery.length}</div>
-                      <div className="text-xs text-gray-400 uppercase tracking-wider">Imágenes</div>
-                    </div>
-                    <div className="bg-white/5 rounded-xl p-4 text-center border border-white/5">
-                      <div className="text-2xl font-bold text-[#FCDD2F]">{selectedProject.videos.length}</div>
-                      <div className="text-xs text-gray-400 uppercase tracking-wider">Videos</div>
-                    </div>
                   </div>
                 </div>
               </div>
