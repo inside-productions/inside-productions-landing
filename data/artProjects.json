@@ -1,0 +1,211 @@
+{
+  "projects2D": [
+    {
+      "id": "1",
+      "name": "Cucaracha Vaquera",
+      "mainImage": "/cucaracha-vaquera.jpeg",
+      "video": {
+        "title": "Cucaracha Vaquera - Videojuego AR",
+        "link": "https://player.vimeo.com/video/1106949178"
+      },
+      "assets": [
+        "/cucaracha-vaquera-1.png",
+        "/cucaracha-vaquera-2.png",
+        "/cucaracha-vaquera-3.png",
+        "/cucaracha-vaquera-4.png"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Trouble Train",
+      "mainImage": "/trouble-train.jpeg",
+      "video": {
+        "title": "Trouble Train - Trailer Videojuego VR",
+        "link": "https://player.vimeo.com/video/1106970227"
+      },
+      "assets": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg",
+        "/trouble-train-4.jpg",
+        "/trouble-train-5.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Restore It Yourself Studio",
+      "mainImage": "/restore-it-yourself-studio.jpeg",
+      "video": {
+        "title": "Restore It Yourself Studio - Experiencia Interactiva",
+        "link": "https://player.vimeo.com/video/1106969440"
+      },
+      "assets": [
+        "/restore-it-yourself-studio-1.png",
+        "/restore-it-yourself-studio-2.png",
+        "/restore-it-yourself-studio-3.png",
+        "/restore-it-yourself-studio-4.png"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Inside",
+      "mainImage": "/inside.png",
+      "video": {
+        "title": "Inside - Videojuego",
+        "link": "https://player.vimeo.com/video/1106968496"
+      },
+      "assets": [
+        "/inside-1.png",
+        "/inside-2.png",
+        "/inside-3.png",
+        "/inside-4.png",
+        "/inside-5.png"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Panoptic",
+      "mainImage": "/panoptic.jpeg",
+      "video": {
+        "title": "Panoptic - Experiencia Interactiva",
+        "link": "https://player.vimeo.com/video/1106955041"
+      },
+      "assets": [
+        "/panoptic-1.png",
+        "/panoptic-2.png",
+        "/panoptic-3.png",
+        "/panoptic-4.png",
+        "/panoptic-5.png",
+        "/panoptic-6.png",
+        "/panoptic-7.png",
+        "/panoptic-8.png"
+      ]
+    }
+  ],
+  "projects3D": [
+    {
+      "id": "1",
+      "name": "Cucaracha Vaquera",
+      "mainImage": "/cucaracha-vaquera.jpeg",
+      "video": {
+        "title": "Cucaracha Vaquera - Videojuego AR",
+        "link": "https://player.vimeo.com/video/1106949178"
+      },
+      "assets": [
+        "/cucaracha-vaquera-1.png",
+        "/cucaracha-vaquera-2.png",
+        "/cucaracha-vaquera-3.png",
+        "/cucaracha-vaquera-4.png"
+      ],
+      "vfx": [
+        "/cucaracha-vaquera-1.png",
+        "/cucaracha-vaquera-2.png"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Trouble Train",
+      "mainImage": "/trouble-train.jpeg",
+      "video": {
+        "title": "Trouble Train - Trailer Videojuego VR",
+        "link": "https://player.vimeo.com/video/1106970227"
+      },
+      "assets": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg",
+        "/trouble-train-4.jpg",
+        "/trouble-train-5.jpg"
+      ],
+      "vfx": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Restore It Yourself Studio",
+      "mainImage": "/restore-it-yourself-studio.jpeg",
+      "video": {
+        "title": "Restore It Yourself Studio - Experiencia Interactiva",
+        "link": "https://player.vimeo.com/video/1106969440"
+      },
+      "assets": [
+        "/restore-it-yourself-studio-1.png",
+        "/restore-it-yourself-studio-2.png",
+        "/restore-it-yourself-studio-3.png",
+        "/restore-it-yourself-studio-4.png"
+      ],
+      "vfx": [
+        "/restore-it-yourself-studio-1.png",
+        "/restore-it-yourself-studio-2.png"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Inside",
+      "mainImage": "/inside.png",
+      "video": {
+        "title": "Inside - Videojuego",
+        "link": "https://player.vimeo.com/video/1106968496"
+      },
+      "assets": [
+        "/inside-1.png",
+        "/inside-2.png",
+        "/inside-3.png",
+        "/inside-4.png",
+        "/inside-5.png"
+      ],
+      "vfx": [
+        "/inside-1.png",
+        "/inside-2.png",
+        "/inside-3.png"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Panoptic",
+      "mainImage": "/panoptic.jpeg",
+      "video": {
+        "title": "Panoptic - Experiencia Interactiva",
+        "link": "https://player.vimeo.com/video/1106955041"
+      },
+      "assets": [
+        "/panoptic-1.png",
+        "/panoptic-2.png",
+        "/panoptic-3.png",
+        "/panoptic-4.png",
+        "/panoptic-5.png",
+        "/panoptic-6.png",
+        "/panoptic-7.png",
+        "/panoptic-8.png"
+      ],
+      "vfx": [
+        "/panoptic-1.png",
+        "/panoptic-2.png",
+        "/panoptic-3.png",
+        "/panoptic-4.png"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Trouble Train - VR Experience",
+      "mainImage": "/trouble-train.jpeg",
+      "video": {
+        "title": "Trouble Train - Videojuego VR",
+        "link": "https://player.vimeo.com/video/1106970930"
+      },
+      "assets": [
+        "/trouble-train-1.jpg",
+        "/trouble-train-2.jpg",
+        "/trouble-train-3.jpg",
+        "/trouble-train-4.jpg"
+      ],
+      "vfx": [
+        "/trouble-train-4.jpg",
+        "/trouble-train-5.jpg"
+      ]
+    }
+  ]
+}
