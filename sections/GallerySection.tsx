@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { X, ChevronLeft, ChevronRight, Play, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { VimeoPlayer } from "@/components/VimeoPlayer"
@@ -20,6 +20,7 @@ interface Project {
   gallery: string[]
   videos: VideoItem[]
   fullDescription: string
+  autoSlideshow?: boolean
 }
 
 interface GallerySectionProps {
@@ -44,10 +45,38 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [slideshowIndex, setSlideshowIndex] = useState(0)
+  const slideshowIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    setProjects(projectsData)
+    setProjects(projectsData as Project[])
   }, [])
+
+  // Auto slideshow effect for projects with autoSlideshow flag
+  useEffect(() => {
+    if (hoveredProject !== null) {
+      const project = projects.find(p => p.id === hoveredProject)
+      if (project?.autoSlideshow && project.gallery.length > 0) {
+        // Start slideshow
+        slideshowIntervalRef.current = setInterval(() => {
+          setSlideshowIndex(prev => (prev + 1) % project.gallery.length)
+        }, 800) // Change image every 800ms
+      }
+    } else {
+      // Clear interval and reset index
+      if (slideshowIntervalRef.current) {
+        clearInterval(slideshowIntervalRef.current)
+        slideshowIntervalRef.current = null
+      }
+      setSlideshowIndex(0)
+    }
+    
+    return () => {
+      if (slideshowIntervalRef.current) {
+        clearInterval(slideshowIntervalRef.current)
+      }
+    }
+  }, [hoveredProject, projects])
 
   // Hide body scroll when modal is open
   useEffect(() => {
@@ -127,7 +156,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight font-heading">
               PROYECTOS
               <span className="block text-[#FCDD2F]">DESTACADOS</span>
-            </h2>
+        </h2>
           </div>
           <p className="text-gray-400 text-lg max-w-md md:text-right">
             Videojuegos, realidad virtual y experiencias interactivas que transforman ideas en realidades
@@ -200,7 +229,13 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
 
         {/* Other Projects - Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherProjects.map((project, index) => (
+          {otherProjects.map((project, index) => {
+            const isSlideshow = project.autoSlideshow && hoveredProject === project.id
+            const currentImage = isSlideshow && project.gallery.length > 0
+              ? project.gallery[slideshowIndex % project.gallery.length]
+              : project.image
+            
+            return (
             <div
               key={project.id}
               onClick={() => openProjectModal(project)}
@@ -211,13 +246,29 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                          hover:border-[#FCDD2F]/30 hover:shadow-[0_0_40px_rgba(252,221,47,0.1)]
                          ${index === 0 ? 'md:col-span-2 aspect-[2/1]' : 'aspect-[4/3]'}`}
             >
-              {/* Image */}
-              <Image
-                src={project.image}
-                alt={project.title}
+              {/* Image - with slideshow support */}
+                      <Image
+                src={currentImage}
+                        alt={project.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className={`object-cover transition-all duration-500 ${isSlideshow ? '' : 'group-hover:scale-110'}`}
               />
+              
+              {/* Slideshow indicators */}
+              {project.autoSlideshow && hoveredProject === project.id && (
+                <div className="absolute top-4 left-4 flex gap-1.5 z-10">
+                  {project.gallery.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        i === slideshowIndex % project.gallery.length
+                          ? 'w-6 bg-[#FCDD2F]'
+                          : 'w-2 bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
               
               {/* Hover Overlay - Slide up effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent
@@ -252,8 +303,8 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                 </div>
               </div>
               
-              {/* Video indicator */}
-              {project.videos.length > 0 && (
+              {/* Video indicator - only show if not in slideshow mode */}
+              {project.videos.length > 0 && !(project.autoSlideshow && hoveredProject === project.id) && (
                 <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-sm
                                 px-3 py-1.5 rounded-full text-xs text-white">
                   <Play className="w-3 h-3 text-[#FCDD2F]" />
@@ -261,7 +312,8 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                 </div>
               )}
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
@@ -333,8 +385,8 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                         </div>
                       )}
                     </>
-                  )}
-                </div>
+                      )}
+                    </div>
 
                 {/* Info Section */}
                 <div className="space-y-6">
@@ -390,15 +442,15 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                      </div>
-                    ))}
-                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
               )}
 
               {/* Navigation between projects */}
               <div className="flex justify-between items-center pt-8 border-t border-white/10">
-                <button 
+          <button
                   onClick={() => navigateProject('prev')}
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
                 >
@@ -407,16 +459,16 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                     <ChevronLeft className="w-5 h-5 group-hover:text-black" />
                   </div>
                   <span className="hidden sm:inline">Proyecto Anterior</span>
-                </button>
-                <button
+          </button>
+          <button
                   onClick={closeModal}
                   className="px-6 py-3 bg-white/5 hover:bg-[#FCDD2F] text-white hover:text-black 
                              rounded-full transition-all duration-300 font-medium border border-white/10
                              hover:border-[#FCDD2F]"
                 >
                   Cerrar
-                </button>
-                <button 
+          </button>
+              <button
                   onClick={() => navigateProject('next')}
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group"
                 >
