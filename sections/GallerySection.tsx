@@ -20,7 +20,6 @@ interface Project {
   gallery: string[]
   videos: VideoItem[]
   fullDescription: string
-  autoSlideshow?: boolean
 }
 
 interface GallerySectionProps {
@@ -52,18 +51,15 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
     setProjects(projectsData as Project[])
   }, [])
 
-  // Auto slideshow effect for projects with autoSlideshow flag
   useEffect(() => {
     if (hoveredProject !== null) {
       const project = projects.find(p => p.id === hoveredProject)
-      if (project?.autoSlideshow && project.gallery.length > 0) {
-        // Start slideshow
+      if (project && project.gallery.length > 0) {
         slideshowIntervalRef.current = setInterval(() => {
           setSlideshowIndex(prev => (prev + 1) % project.gallery.length)
-        }, 800) // Change image every 800ms
+        }, 800)
       }
     } else {
-      // Clear interval and reset index
       if (slideshowIntervalRef.current) {
         clearInterval(slideshowIntervalRef.current)
         slideshowIntervalRef.current = null
@@ -164,7 +160,12 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
         </div>
 
         {/* Featured Project - Large Card */}
-        {featuredProject && (
+        {featuredProject && (() => {
+          const isFeaturedSlideshow = hoveredProject === featuredProject.id && featuredProject.gallery.length > 0
+          const featuredImage = isFeaturedSlideshow
+            ? featuredProject.gallery[slideshowIndex % featuredProject.gallery.length]
+            : featuredProject.image
+          return (
           <div 
             className="mb-8 group cursor-pointer"
             onClick={() => openProjectModal(featuredProject)}
@@ -174,11 +175,26 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
             <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden border border-white/10
                             transition-all duration-700 hover:border-[#FCDD2F]/40
                             hover:shadow-[0_0_80px_rgba(252,221,47,0.15)]">
+              {/* Slideshow indicators */}
+              {isFeaturedSlideshow && (
+                <div className="absolute top-6 left-8 flex gap-1.5 z-10">
+                  {featuredProject.gallery.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        i === slideshowIndex % featuredProject.gallery.length
+                          ? 'w-6 bg-[#FCDD2F]'
+                          : 'w-2 bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
               <Image
-                src={featuredProject.image}
+                src={featuredImage}
                 alt={featuredProject.title}
                 fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                className={`object-cover transition-all duration-500 ${isFeaturedSlideshow ? '' : 'group-hover:scale-105'}`}
               />
               
               {/* Overlay with diagonal cut */}
@@ -220,13 +236,14 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               </div>
             </div>
           </div>
-        )}
+          )
+        })()}
 
         {/* Other Projects - Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherProjects.map((project, index) => {
-            const isSlideshow = project.autoSlideshow && hoveredProject === project.id
-            const currentImage = isSlideshow && project.gallery.length > 0
+            const isSlideshow = hoveredProject === project.id && project.gallery.length > 0
+            const currentImage = isSlideshow
               ? project.gallery[slideshowIndex % project.gallery.length]
               : project.image
             
@@ -250,7 +267,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               />
               
               {/* Slideshow indicators */}
-              {project.autoSlideshow && hoveredProject === project.id && (
+              {isSlideshow && (
                 <div className="absolute top-4 left-4 flex gap-1.5 z-10">
                   {project.gallery.map((_, i) => (
                     <div
@@ -271,14 +288,6 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               
               {/* Content - Always at bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                {/* Number badge */}
-                <div className="absolute top-0 right-6 -translate-y-1/2 w-12 h-12 bg-[#FCDD2F] rounded-full
-                                flex items-center justify-center font-bold text-black text-lg
-                                opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100
-                                transition-all duration-500 delay-100">
-                  {String(index + 2).padStart(2, '0')}
-                </div>
-                
                 <h3 className="text-white font-bold text-xl md:text-2xl mb-2 font-heading
                                transform transition-all duration-500 group-hover:text-[#FCDD2F]">
                   {project.title}
@@ -299,7 +308,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               </div>
               
               {/* Video indicator - only show if not in slideshow mode */}
-              {project.videos.length > 0 && !(project.autoSlideshow && hoveredProject === project.id) && (
+              {project.videos.length > 0 && !isSlideshow && (
                 <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-sm
                                 px-3 py-1.5 rounded-full text-xs text-white">
                   <Play className="w-3 h-3 text-[#FCDD2F]" />
