@@ -1,11 +1,18 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { Button } from "@/components/button"
 import { Input } from "@/components/input"
 import { Textarea } from "@/components/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/select"
-import { Send, Loader2 } from "lucide-react"
+import { Send, Loader2, ChevronDown } from "lucide-react"
+
+const PROJECT_OPTIONS = [
+  { value: "ar", label: "Realidad Aumentada" },
+  { value: "vr", label: "Realidad Virtual" },
+  { value: "mr", label: "Realidad Mixta" },
+  { value: "interactive", label: "Experiencia Interactiva" },
+  { value: "other", label: "Otro" },
+]
 
 interface ContactSectionProps {
   AnimatedParticles: React.ComponentType<{
@@ -21,21 +28,29 @@ interface ContactSectionProps {
 export default function ContactSection({ AnimatedParticles }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     projectType: '',
     message: ''
   })
 
-  // Optimizamos las funciones de manejo de cambios con useCallback
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
-  }, [])
-
-  const handleSelectChange = useCallback((value: string) => {
-    setFormData(prev => ({ ...prev, projectType: value }))
   }, [])
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
@@ -45,20 +60,14 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
 
       if (response.ok) {
         setIsSubmitted(true)
-        setFormData({ name: '', email: '', projectType: '', message: '' })
-        
-        // Resetear después de 5 segundos
-        setTimeout(() => {
-          setIsSubmitted(false)
-        }, 5000)
+        setFormData({ name: '', email: '', phone: '', projectType: '', message: '' })
+        setTimeout(() => setIsSubmitted(false), 5000)
       } else {
         throw new Error('Error al enviar el mensaje')
       }
@@ -69,28 +78,25 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
       setIsSubmitting(false)
     }
   }, [formData])
-  // Usamos un useEffect para renderizar las partículas solo una vez al cargar
+
   const [particlesRendered, setParticlesRendered] = useState(false)
-  
   useEffect(() => {
-    // Solo renderizamos las partículas una vez
-    if (!particlesRendered) {
-      setParticlesRendered(true)
-    }
+    if (!particlesRendered) setParticlesRendered(true)
   }, [particlesRendered])
+
+  const selectedLabel = PROJECT_OPTIONS.find(o => o.value === formData.projectType)?.label
 
   return (
     <section id="contact" className="h-screen py-20 bg-black text-white relative overflow-hidden flex items-center">
-      {/* Static sparks constellation - solo se renderiza una vez */}
       <div className="absolute inset-0 overflow-hidden">
         {particlesRendered && (
           <div className="particles-container" style={{ pointerEvents: 'none' }}>
-            <AnimatedParticles 
-              count={60} // Reducimos la cantidad para mejorar el rendimiento
-              className="animate-float-gentle opacity-40" 
+            <AnimatedParticles
+              count={60}
+              className="animate-float-gentle opacity-40"
               sizeRange={[2, 8]}
-              animationRange={[15, 25]} // Animación más lenta
-              delayRange={[0, 0]} // Sin delay aleatorio
+              animationRange={[15, 25]}
+              delayRange={[0, 0]}
               backgroundType="linear"
             />
           </div>
@@ -140,22 +146,57 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
                 </div>
               </div>
 
-              <div className="group">
-                <label className="block text-sm font-medium mb-2 group-hover:text-[#FCDD2F] transition-colors duration-300">
-                  Tipo de Proyecto
-                </label>
-                <Select value={formData.projectType} onValueChange={handleSelectChange}>
-                  <SelectTrigger className="bg-white/90 text-black border-gray-300 focus:border-[#FCDD2F] focus:ring-[#FCDD2F] transition-all duration-300 hover:shadow-lg">
-                    <SelectValue placeholder="Selecciona el tipo de proyecto" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ar">Realidad Aumentada</SelectItem>
-                    <SelectItem value="vr">Realidad Virtual</SelectItem>
-                    <SelectItem value="mr">Realidad Mixta</SelectItem>
-                    <SelectItem value="interactive">Experiencia Interactiva</SelectItem>
-                    <SelectItem value="other">Otro</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="group">
+                  <label className="block text-sm font-medium mb-2 group-hover:text-[#FCDD2F] transition-colors duration-300">
+                    Número de contacto
+                  </label>
+                  <Input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="bg-white/90 text-black border-gray-300 focus:border-[#FCDD2F] focus:ring-[#FCDD2F] transition-all duration-300 hover:shadow-lg"
+                    placeholder="+52 442 000 0000"
+                  />
+                </div>
+                <div className="group">
+                  <label className="block text-sm font-medium mb-2 group-hover:text-[#FCDD2F] transition-colors duration-300">
+                    Tipo de Proyecto
+                  </label>
+                  <div ref={dropdownRef} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setDropdownOpen(prev => !prev)}
+                      className="w-full h-9 flex items-center justify-between gap-2 rounded-md border border-gray-300 bg-white/90 text-black px-3 text-sm hover:shadow-lg focus:outline-none focus:border-[#FCDD2F] focus:ring-2 focus:ring-[#FCDD2F] transition-all duration-300"
+                    >
+                      <span className={selectedLabel ? "text-black" : "text-gray-400"}>
+                        {selectedLabel ?? "Selecciona el tipo de proyecto"}
+                      </span>
+                      <ChevronDown className={`w-4 h-4 text-gray-500 shrink-0 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    {dropdownOpen && (
+                      <ul className="absolute z-20 mt-1 w-full rounded-md border border-gray-200 bg-white shadow-lg overflow-hidden">
+                        {PROJECT_OPTIONS.map(option => (
+                          <li
+                            key={option.value}
+                            onClick={() => {
+                              setFormData(prev => ({ ...prev, projectType: option.value }))
+                              setDropdownOpen(false)
+                            }}
+                            className={`px-3 py-2 text-sm cursor-pointer transition-colors duration-150 ${
+                              formData.projectType === option.value
+                                ? "bg-[#FCDD2F] text-black font-semibold"
+                                : "text-black hover:bg-[#FCDD2F]/20"
+                            }`}
+                          >
+                            {option.label}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
               </div>
 
               <div className="group">

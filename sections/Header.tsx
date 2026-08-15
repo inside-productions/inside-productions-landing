@@ -73,6 +73,9 @@ export default function Header() {
         </div>
       </header>
 
+      {/* Spacer to offset fixed header */}
+      <div className="h-[72px] md:h-[80px]" />
+
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col">
