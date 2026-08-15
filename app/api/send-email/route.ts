@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, projectType, message } = await request.json()
+    const { name, email, phone, projectType, message } = await request.json()
 
     // Validar datos requeridos
     if (!name || !email || !message) {
@@ -64,6 +64,13 @@ export async function POST(request: NextRequest) {
                     <a href="mailto:${email}" style="color: #FCDD2F; text-decoration: none;">${email}</a>
                   </td>
                 </tr>
+                ${phone ? `
+                <tr>
+                  <td style="padding: 8px 0; font-weight: bold; color: #555;">Teléfono:</td>
+                  <td style="padding: 8px 0; color: #333;">
+                    <a href="tel:${phone}" style="color: #FCDD2F; text-decoration: none;">${phone}</a>
+                  </td>
+                </tr>` : ''}
                 <tr>
                   <td style="padding: 8px 0; font-weight: bold; color: #555;">Tipo de Proyecto:</td>
                   <td style="padding: 8px 0; color: #333;">
@@ -109,7 +116,7 @@ INSIDE PRODUCTIONS - Nuevo Contacto
 
 Nombre: ${name}
 Email: ${email}
-Tipo de Proyecto: ${projectTypeName}
+${phone ? `Teléfono: ${phone}\n` : ''}Tipo de Proyecto: ${projectTypeName}
 
 Mensaje:
 ${message}

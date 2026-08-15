@@ -167,6 +167,7 @@ body, p, a, button, input, textarea, select, li, span, div:not(.font-heading) {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 /* Video styling */

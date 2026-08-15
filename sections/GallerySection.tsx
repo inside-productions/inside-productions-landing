@@ -17,6 +17,7 @@ interface Project {
   description: string
   image: string
   hasVideo: boolean
+  playLink?: string
   gallery: string[]
   videos: VideoItem[]
   fullDescription: string
@@ -45,6 +46,8 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const [slideshowIndex, setSlideshowIndex] = useState(0)
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
   const slideshowIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -114,6 +117,38 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
   // Featured project is the first one
   const featuredProject = projects[0]
   const otherProjects = projects.slice(1)
+
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxIndex(index)
+    setLightboxImage(images[index])
+  }
+
+  const closeLightbox = () => setLightboxImage(null)
+
+  useEffect(() => {
+    if (!lightboxImage || !selectedProject) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") lightboxNext()
+      if (e.key === "ArrowLeft") lightboxPrev()
+      if (e.key === "Escape") closeLightbox()
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
+  }, [lightboxImage, lightboxIndex, selectedProject])
+
+  const lightboxPrev = () => {
+    if (!selectedProject) return
+    const newIndex = (lightboxIndex - 1 + selectedProject.gallery.length) % selectedProject.gallery.length
+    setLightboxIndex(newIndex)
+    setLightboxImage(selectedProject.gallery[newIndex])
+  }
+
+  const lightboxNext = () => {
+    if (!selectedProject) return
+    const newIndex = (lightboxIndex + 1) % selectedProject.gallery.length
+    setLightboxIndex(newIndex)
+    setLightboxImage(selectedProject.gallery[newIndex])
+  }
 
   return (
     <section id="gallery" className="min-h-screen py-24 bg-gradient-to-br from-black via-[#0d0d0d] to-[#0a0a0a] text-white relative overflow-hidden">
@@ -307,14 +342,6 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                 </div>
               </div>
               
-              {/* Video indicator - only show if not in slideshow mode */}
-              {project.videos.length > 0 && !isSlideshow && (
-                <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-sm
-                                px-3 py-1.5 rounded-full text-xs text-white">
-                  <Play className="w-3 h-3 text-[#FCDD2F]" />
-                  <span>{project.videos.length}</span>
-                </div>
-              )}
             </div>
             )
           })}
@@ -405,6 +432,17 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                     <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                       {selectedProject.fullDescription}
                     </p>
+                    {selectedProject.playLink && (
+                      <a
+                        href={selectedProject.playLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-5 flex items-center justify-center gap-2 w-full bg-[#FCDD2F] hover:bg-[#FCDD2F] text-black font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(252,221,47,0.3),0_0_40px_rgba(252,221,47,0.6)] text-sm"
+                      >
+                        <Play className="w-4 h-4" />
+                        ¡Juégalo aquí!
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -423,6 +461,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                     {selectedProject.gallery.map((image, index) => (
                       <div
                         key={index}
+                        onClick={() => openLightbox(selectedProject.gallery, index)}
                         className="aspect-square bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5
                                    hover:border-[#FCDD2F]/30 transition-all duration-300 cursor-pointer
                                    relative group"
@@ -473,6 +512,62 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-[#FCDD2F] rounded-full transition-colors group"
+          >
+            <X className="w-6 h-6 text-white group-hover:text-black" />
+          </button>
+
+          {selectedProject && selectedProject.gallery.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); lightboxPrev() }}
+                className="absolute left-4 p-2 bg-white/10 hover:bg-[#FCDD2F] rounded-full transition-colors group"
+              >
+                <ChevronLeft className="w-6 h-6 text-white group-hover:text-black" />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); lightboxNext() }}
+                className="absolute right-4 p-2 bg-white/10 hover:bg-[#FCDD2F] rounded-full transition-colors group"
+              >
+                <ChevronRight className="w-6 h-6 text-white group-hover:text-black" />
+              </button>
+            </>
+          )}
+
+          <div
+            className="relative max-w-5xl max-h-[85vh] w-full h-full mx-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxImage}
+              alt="Imagen ampliada"
+              fill
+              className="object-contain"
+            />
+          </div>
+
+          {selectedProject && selectedProject.gallery.length > 1 && (
+            <div className="absolute bottom-4 flex gap-1.5">
+              {selectedProject.gallery.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setLightboxIndex(i); setLightboxImage(selectedProject.gallery[i]) }}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === lightboxIndex ? 'w-6 bg-[#FCDD2F]' : 'w-1.5 bg-white/40'}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </section>

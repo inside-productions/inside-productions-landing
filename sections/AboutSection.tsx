@@ -83,7 +83,7 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
             {teamMembers.map((member, index) => (
               <div 
                 key={member.id} 
-                className="text-center group hover:transform hover:scale-105 transition-all duration-300"
+                className="text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative mb-4 mx-auto w-48 h-48">
@@ -92,10 +92,10 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
                     alt={member.name}
                     width={192}
                     height={192}
-                    className="w-48 h-48 rounded-full object-cover border-4 border-transparent group-hover:border-[#FCDD2F] transition-all duration-300"
+                    className="w-48 h-48 rounded-full object-cover border-4 border-transparent"
                   />
                 </div>
-                <h4 className="text-xl font-bold text-black mb-2 font-heading group-hover:text-[#FCDD2F] transition-colors duration-300">
+                <h4 className="text-xl font-bold text-black mb-2 font-heading">
                   {member.name}
                 </h4>
                 <p className="text-[#FCDD2F] font-semibold mb-3">{member.position}</p>
