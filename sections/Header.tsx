@@ -33,7 +33,7 @@ export default function Header() {
 
   const menuItems = [
     { label: "Qué hacemos", href: "/que-hacemos" },
-    { label: "Galería", href: "/galeria" },
+    { label: "Proyectos", href: "/proyectos" },
     { label: "Quiénes somos", href: "/quienes-somos" },
     { label: "Contáctanos", href: "/contacto" },
   ]
