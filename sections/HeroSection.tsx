@@ -3,48 +3,38 @@
 import { Button } from "@/components/button"
 import Link from "next/link"
 
-interface HeroSectionProps {
-  AnimatedParticles: React.ComponentType<{
-    count: number
-    className?: string
-  }>
-}
-
-export default function HeroSection({ AnimatedParticles }: HeroSectionProps) {
+export default function HeroSection() {
   return (
     <section
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[100svh] h-[100svh] flex items-center justify-center overflow-hidden"
       style={{
         position: "relative",
       }}
     >
-      {/* Fondo negro base */}
-      <div className="absolute inset-0 bg-black"></div>
+      {/* Fondo blanco base */}
+      <div className="absolute inset-0 bg-white"></div>
       
-      {/* Fondo con imagen semi-transparente */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{
-          backgroundImage: "url('/hero-background.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-      
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <AnimatedParticles count={50} className="animate-particle-dance opacity-40" />
+      {/* Imagen de fondo a ancho completo, adaptable a móvil/tablet/desktop */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 -translate-y-[40px] md:-translate-y-[60px] scale-[1.08] md:scale-105 origin-center">
+          <img
+            src="/hero-background-1.png"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            draggable={false}
+          />
+          <div className="absolute inset-0 bg-black/35" aria-hidden="true" />
+        </div>
       </div>
       
-      <div className="relative z-10 text-center text-white px-4 animate-fade-in">
+      <div className="relative z-10 text-center text-black px-4 animate-fade-in -translate-y-[40px] md:-translate-y-[60px]">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider mb-4 leading-tight font-heading">
           <span className="inline-block text-[#FCDD2F]">
             INSIDE PRODUCTIONS
           </span>
         </h1>
                 
-        <div className="text-xl md:text-3xl lg:text-4xl font-medium tracking-wide mb-8 mt-8 md:mt-16 font-heading text-white/80">
+        <div className="text-xl md:text-3xl lg:text-4xl font-medium tracking-wide mb-8 mt-8 md:mt-16 font-heading text-white">
           <div className="flex flex-wrap justify-center gap-4">
             {["INNOVACIÓN", "INTERACTIVA", "AL"].map((word, index) => (
               <span
@@ -69,13 +59,32 @@ export default function HeroSection({ AnimatedParticles }: HeroSectionProps) {
           </div>
         </div>
         
-        <Link href="/demo-reel">
-        <Button
-          className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
-        >
-          <span className="relative z-10">Ver Demo</span>
-        </Button>
-        </Link>
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="#video"
+            onClick={(e) => {
+              e.preventDefault()
+              ;(document.getElementById("demo-reel-player") ?? document.getElementById("video"))
+                ?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                })
+            }}
+          >
+            <Button
+              className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
+            >
+              <span className="relative z-10">Ver Demo</span>
+            </Button>
+          </a>
+          <Link href="/contacto">
+            <Button
+              className="bg-[#FCDD2F] hover:bg-[#FCDD2F]/90 text-black font-semibold px-8 py-4 text-lg rounded-full transition-all duration-500 ease-out transform hover:scale-110 hover:shadow-2xl hover:shadow-[#FCDD2F]/30"
+            >
+              <span className="relative z-10">Cotiza un proyecto</span>
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   )

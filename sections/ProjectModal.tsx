@@ -71,7 +71,7 @@ export default function ProjectModal({
 
           {/* Carousel Container */}
           <div className="relative mb-8">
-            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden relative" style={{ height: "500px" }}>
+            <div className="bg-black rounded-2xl overflow-hidden relative aspect-video shadow-2xl">
               {(() => {
                 const totalItems = selectedProject.gallery.length + selectedProject.videos.length
                 const isVideo = currentModalImage >= selectedProject.gallery.length
@@ -106,7 +106,7 @@ export default function ProjectModal({
                         key={`video-${selectedProject.id}-${videoIndex}-${videoId}`}
                         videoId={videoId}
                         title={title}
-                        className="w-full h-full"
+                        className="w-full h-full rounded-2xl shadow-2xl hover:shadow-[#FCDD2F]/20 transition-all duration-500"
                       />
                     )
                   } else {
@@ -131,18 +131,19 @@ export default function ProjectModal({
                 }
               })()}
 
-              {/* Navigation Arrows */}
-              {selectedProject.gallery.length + selectedProject.videos.length > 1 && (
+              {/* Navigation Arrows — only for image carousel / multi-item, not over video controls */}
+              {selectedProject.gallery.length + selectedProject.videos.length > 1 &&
+                currentModalImage < selectedProject.gallery.length && (
                 <>
                   <button
                     onClick={prevModalImage}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 z-30"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={nextModalImage}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 z-30"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>

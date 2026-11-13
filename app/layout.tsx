@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { Be_Vietnam_Pro, Outfit } from 'next/font/google'
+import { Be_Vietnam_Pro, Outfit, Rye } from 'next/font/google'
 import './globals.css'
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -17,6 +17,13 @@ const bodyFont = Outfit({
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-body',
+})
+
+const westernFont = Rye({
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
+  variable: '--font-western',
 })
 
 export const metadata: Metadata = {
@@ -74,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${beVietnamPro.variable} ${bodyFont.variable}`}>
+    <html lang="en" className={`${beVietnamPro.variable} ${bodyFont.variable} ${westernFont.variable}`}>
       <head>
         <style>{`
 html {

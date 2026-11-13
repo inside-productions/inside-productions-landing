@@ -27,10 +27,10 @@ export default function SocialMediaSection({ AnimatedParticles }: SocialMediaSec
   return (
     <section className="py-16 bg-black text-white relative overflow-hidden">
       {/* Energetic sparks background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <AnimatedParticles 
           count={50} 
-          className="animate-particle-dance opacity-20" 
+          className="animate-particle-dance opacity-20 pointer-events-none" 
           sizeRange={[2, 7]}
           animationRange={[6, 10]}
           delayRange={[0, 6]}

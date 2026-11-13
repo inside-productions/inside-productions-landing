@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     const projectTypeNames: { [key: string]: string } = {
       'ar': 'Realidad Aumentada',
       'vr': 'Realidad Virtual',
-      'mr': 'Realidad Mixta',
+      'game': 'Videojuego',
       'interactive': 'Experiencia Interactiva',
       'other': 'Otro'
     }
