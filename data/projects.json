@@ -85,6 +85,25 @@
     "fullDescription": "Alexandra Reeds no cree en los accidentes. Cuando una serie de desapariciones apunta a una prisión abandonada, decide entrar… sola. Periodista tenaz, acostumbrada a enfrentarse al poder, no busca titulares: busca la verdad. \n Lo que parecía una investigación más se convierte en una experiencia límite. Ecos que responden sin ser llamados, puertas que se cierran solas, y una presencia que la sigue, sin mostrarse. A cada paso, la prisión revela algo: no está vacía. Y nunca lo estuvo. \n Panoptic es una experiencia narrativa. Una historia sobre el precio de buscar respuestas en los lugares donde nadie más se atreve a mirar. Porque cuando decides enfrentar lo que otros ignoran, lo que encuentras… también te encuentra a ti."
   },
   {
+    "id": 7,
+    "title": "Deprivation",
+    "description": "Videojuego de terror psicológico inspirado en el experimento ruso del sueño.",
+    "image": "/deprivation-1.png",
+    "hasVideo": false,
+    "playLink": "https://playcanv.as/p/patjS2x3",
+    "highlightImage": "/deprivation-3.png",
+    "gallery": [
+      "/deprivation-1.png",
+      "/deprivation-2.png",
+      "/deprivation-4.png",
+      "/deprivation-5.png",
+      "/deprivation-6.png",
+      "/deprivation-7.png"
+    ],
+    "videos": [],
+    "fullDescription": "Deprivation sigue la historia de Wilfredo Insidov, investigador principal del Programa Ruso de Privación del Sueño, mientras explora los límites de la mente humana.\n\nDeberás evaluar las respuestas humanas ante diversos estímulos bajo los efectos del gas experimental que has estado desarrollando, administrar tus recursos, velar por la integridad de tu paciente y presentar los resultados de tu investigación de doce días para avanzar en tus estudios."
+  },
+  {
     "id": 5,
     "title": "Trouble Train (Legacy)",
     "description": "Experiencia VR contra reloj en un tren fuera de control en el Viejo Oeste; deberás reparar, esquivar obstáculos y tomar decisiones críticas para sobrevivir.",
@@ -112,16 +131,18 @@
     "image": "/inside.png",
     "hasVideo": false,
     "gallery": [
-      "/inside-1.png",
       "/inside-2.png",
       "/inside-3.png",
       "/inside-4.png",
-      "/inside-5.png"
+      "/inside-5.png",
+      "/inside-6.png",
+      "/inside-7.png",
+      "/inside-8.png"
     ],
     "videos": [
       {
         "title": "Inside - Videojuego",
-        "link": "https://player.vimeo.com/video/1106968496"
+        "link": "https://vimeo.com/1246054770"
       }
     ],
     "fullDescription": "Encerrado en su departamento, Alex ha dejado de mirar hacia afuera,  porque lo que necesita enfrentar está dentro. Algo ocurrió. Algo que lo empujó al límite. Desde entonces, la realidad ha comenzado a resquebrajarse: sombras que se mueven solas, susurros que no callan y una presencia que parece encarnar todo lo que no ha querido aceptar. \n En INSIDE, acompañas a Alex en un viaje introspectivo entre dos dimensiones que se entrelazan: una física y otra emocional. A través de acertijos, símbolos ocultos y encuentros con su propia culpa, deberá enfrentarse a lo que más teme: a sí mismo."

@@ -1,10 +1,10 @@
 [
   {
-    "id": 1,
-    "name": "Jesús Machuca",
-    "position": "Lead Programmer.",
+    "id": 8,
+    "name": "Kevin Ye Chan",
+    "position": "Audio Design",
     "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
-    "image": "/jesus-machuca.jpeg"
+    "image": "/kevin-ye-chan.jpeg"
   },
   {
     "id": 2,
@@ -15,14 +15,14 @@
   },
   {
     "id": 3,
-    "name": "Sara Sierra",
+    "name": "Bety Vega",
     "position": "Tech Artist",
     "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
     "image": "/sara-sierra.jpeg"
   },
   {
     "id": 4,
-    "name": "Bety Vega",
+    "name": "Sara Sierra",
     "position": "Tech Artist",
     "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
     "image": "/bety-vega.jpeg"
@@ -49,10 +49,10 @@
     "image": "/esmeralda-hernandez.jpeg"
   },
   {
-    "id":8,
-    "name": "Kevin Ye Chan",
-    "position": "Audio Design",
+    "id": 1,
+    "name": "Jesús Machuca",
+    "position": "Programmer",
     "description": "Lic. Arte Digital del TEC de Monterrey, especialización en diseño de Videojuegos.",
-    "image": "/kevin-ye-chan.jpeg"
+    "image": "/jesus-machuca.jpeg"
   }
 ]

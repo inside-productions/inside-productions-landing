@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -20,17 +19,9 @@ export default function Footer() {
               INSIDE PRODUCTIONS
             </div>
           </div>
-          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8">
-            <p className="text-gray-400">© 2026 Inside Productions. Todos los derechos reservados.</p>
-            <div className="flex space-x-4">
-              <Link href="/privacy" className="text-gray-400 hover:text-[#FCDD2F] transition-colors duration-300">
-                Privacidad
-              </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-[#FCDD2F] transition-colors duration-300">
-                Términos
-              </Link>
-            </div>
-          </div>
+          <p className="text-gray-400 text-center md:text-right">
+            © 2026 Inside Productions. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>

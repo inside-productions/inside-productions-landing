@@ -8,6 +8,10 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-be-vietnam-pro), sans-serif;
 }
 
+.font-western {
+  font-family: var(--font-western), serif;
+}
+
 /* Outfit como alternativa a Funnel Sans para texto general */
 body, p, a, button, input, textarea, select, li, span, div:not(.font-heading) {
   font-family: var(--font-body), sans-serif;
@@ -127,8 +131,15 @@ body, p, a, button, input, textarea, select, li, span, div:not(.font-heading) {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: #fff;
+    overscroll-behavior: none;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: #fff;
+    overscroll-behavior: none;
+    overflow-x: hidden;
   }
 }
 
@@ -168,6 +179,7 @@ body, p, a, button, input, textarea, select, li, span, div:not(.font-heading) {
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  overscroll-behavior: none;
 }
 
 /* Video styling */
@@ -209,8 +221,10 @@ video {
   }
 }
 
-/* Vimeo iframe responsive */
-iframe {
+/* Solo desactivar clics en iframes de Vimeo (reproductor custom).
+   NO aplicar a todos los iframe: bloquea Google Calendar, etc. */
+iframe[src*="player.vimeo.com"],
+iframe[src*="vimeo.com"] {
   pointer-events: none;
 }
 

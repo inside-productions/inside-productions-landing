@@ -8,7 +8,7 @@ import AnimatedParticles from "@/components/AnimatedParticles"
 
 export default function ContactoPage() {
   return (
-    <div className="min-h-screen bg-white text-black font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-white text-black font-sans">
       <Header />
       
       <ContactSection AnimatedParticles={AnimatedParticles} />
