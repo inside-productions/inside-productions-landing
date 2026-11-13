@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/button"
 import Link from "next/link"
+import { scrollToDemoReel } from "@/lib/scrollToDemoReel"
 
 export default function HeroSection() {
   return (
@@ -61,14 +62,10 @@ export default function HeroSection() {
         
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#video"
+            href="#demo-reel-player"
             onClick={(e) => {
               e.preventDefault()
-              ;(document.getElementById("demo-reel-player") ?? document.getElementById("video"))
-                ?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "center",
-                })
+              scrollToDemoReel()
             }}
           >
             <Button
