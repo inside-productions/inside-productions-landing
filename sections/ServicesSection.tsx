@@ -37,7 +37,7 @@ const services = [
 
 export default function ServicesSection({ AnimatedParticles }: ServicesSectionProps) {
   return (
-    <section id="services" className="min-h-screen py-20 bg-white text-black relative overflow-hidden flex items-center">
+    <section id="services" className="min-h-screen pt-12 pb-20 md:pt-16 md:pb-24 bg-white text-black relative overflow-hidden">
       {/* Dynamic background with sparks */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatedParticles 
@@ -50,7 +50,7 @@ export default function ServicesSection({ AnimatedParticles }: ServicesSectionPr
         />
       </div>
       <div className="container mx-auto px-4 relative z-10 w-full">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-16 animate-slide-up font-heading text-black">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-10 md:mb-12 animate-slide-up font-heading text-black">
           QUÉ HACEMOS
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 max-w-5xl mx-auto">

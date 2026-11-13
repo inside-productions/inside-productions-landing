@@ -31,7 +31,7 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
     setTeamMembers(teamMembersData)
   }, [])
   return (
-    <section id="about" className="min-h-screen py-20 bg-white relative overflow-hidden">
+    <section id="about" className="min-h-screen pt-12 pb-20 md:pt-16 md:pb-24 bg-white relative overflow-hidden">
       {/* Dynamic sparks background */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatedParticles 
@@ -45,7 +45,7 @@ export default function AboutSection({ AnimatedParticles }: AboutSectionProps) {
       </div>
       <div className="relative z-10 w-full">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center animate-slide-up mb-8 font-heading">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center animate-slide-up mb-10 md:mb-12 font-heading">
             QUIÉNES SOMOS
           </h2>
         </div>
