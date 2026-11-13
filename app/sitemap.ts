@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/galeria`,
+      url: `${baseUrl}/proyectos`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
