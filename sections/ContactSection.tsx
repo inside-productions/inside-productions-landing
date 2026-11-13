@@ -103,10 +103,10 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
     return (
       <section
         id="contact"
-        className="min-h-screen py-12 md:py-16 bg-black text-white scroll-mt-[72px] md:scroll-mt-[80px]"
+        className="min-h-screen pt-12 pb-20 md:pt-16 md:pb-24 bg-black text-white scroll-mt-[72px] md:scroll-mt-[80px]"
       >
         <div className="mx-auto w-full max-w-6xl px-4">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-6 font-heading">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-10 md:mb-12 font-heading">
             COTIZA CON NOSOTROS
           </h2>
 
@@ -174,7 +174,7 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
   return (
     <section
       id="contact"
-      className="min-h-screen py-12 md:py-16 bg-black text-white relative scroll-mt-[72px] md:scroll-mt-[80px]"
+      className="min-h-screen pt-12 pb-20 md:pt-16 md:pb-24 bg-black text-white relative scroll-mt-[72px] md:scroll-mt-[80px]"
     >
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {particlesRendered && (
@@ -190,7 +190,7 @@ export default function ContactSection({ AnimatedParticles }: ContactSectionProp
       </div>
 
       <div className="container mx-auto px-4 relative z-10 w-full max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-6 md:mb-8 font-heading">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-10 md:mb-12 font-heading">
           COTIZA CON NOSOTROS
         </h2>
 
