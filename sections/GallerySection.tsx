@@ -160,7 +160,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
   }
 
   return (
-    <section id="gallery" className="min-h-screen py-24 bg-gradient-to-br from-black via-[#0d0d0d] to-[#0a0a0a] text-white relative overflow-hidden">
+    <section id="gallery" className="min-h-screen pt-12 pb-20 md:pt-16 md:pb-24 bg-gradient-to-br from-black via-[#0d0d0d] to-[#0a0a0a] text-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FCDD2F]/50 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FCDD2F]/50 to-transparent" />
@@ -183,23 +183,12 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 max-w-6xl relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
-          <div>
-            <div className="mb-4">
-              <span className="text-[#FCDD2F] text-sm font-semibold tracking-widest uppercase">
-                Nuestro Portafolio
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight font-heading">
-              PROYECTOS
-              <span className="block text-[#FCDD2F]">DESTACADOS</span>
-        </h2>
-          </div>
-          <p className="text-gray-400 text-lg max-w-md md:text-right">
-            Videojuegos, realidad virtual y experiencias interactivas que transforman ideas en realidades
-          </p>
+        <div className="mb-10 md:mb-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-wider font-heading">
+            PROYECTOS <span className="text-[#FCDD2F]">DESTACADOS</span>
+          </h2>
         </div>
 
         {/* Featured Project - Large Card */}
@@ -215,7 +204,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
             onMouseEnter={() => setHoveredProject(featuredProject.id)}
             onMouseLeave={() => setHoveredProject(null)}
           >
-            <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden border border-white/10
+            <div className="relative h-[320px] md:h-[400px] rounded-3xl overflow-hidden border border-white/10
                             transition-all duration-700 hover:border-[#FCDD2F]/40
                             hover:shadow-[0_0_80px_rgba(252,221,47,0.15)]">
               {/* Slideshow indicators */}
@@ -245,13 +234,6 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               
               {/* Content */}
               <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end md:justify-center md:max-w-xl">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-12 h-1 bg-[#FCDD2F] rounded-full" />
-                  <span className="text-[#FCDD2F] text-xs font-bold tracking-widest uppercase">
-                    Proyecto Destacado
-                  </span>
-                </div>
-                
                 <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 font-heading
                                transform transition-transform duration-500 group-hover:translate-x-2">
                   {featuredProject.title}
@@ -283,7 +265,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
         })()}
 
         {/* Other Projects — 2 columnas iguales (móvil: 1 columna) */}
-        <div className="grid grid-cols-1 gap-6 md:[grid-template-columns:repeat(2,minmax(0,1fr))]">
+        <div className="grid grid-cols-1 gap-5 md:gap-6 md:[grid-template-columns:repeat(2,minmax(0,1fr))]">
           {otherProjects.map((project) => {
             const isSlideshow = hoveredProject === project.id && project.gallery.length > 0
             const currentImage = isSlideshow
@@ -299,7 +281,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               className="group relative rounded-2xl overflow-hidden cursor-pointer 
                          border border-white/5 transition-all duration-500
                          hover:border-[#FCDD2F]/30 hover:shadow-[0_0_40px_rgba(252,221,47,0.1)]
-                         aspect-[4/3] w-full min-w-0"
+                         aspect-[5/4] w-full min-w-0"
             >
               {/* Image - with slideshow support */}
                       <Image
