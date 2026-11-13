@@ -42,7 +42,7 @@ export default function VideoSection({ AnimatedParticles, compact = false }: Vid
         <h2 className="text-3xl md:text-5xl font-bold tracking-wider mb-5 animate-slide-up font-heading">
           DEMO REEL
         </h2>
-        <div id="demo-reel-player" className={playerWidthClass}>
+        <div id="demo-reel-player" className={`${playerWidthClass} scroll-mt-[72px] md:scroll-mt-[80px]`}>
           <VimeoPlayer
             videoId="1118868855"
             title="INSIDE PRODUCTIONS DEMO REEL 2026"
