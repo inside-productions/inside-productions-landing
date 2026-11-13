@@ -58,7 +58,7 @@ export default function ClientsSection({ AnimatedParticles }: ClientsSectionProp
     }
   }, [isPaused])
   return (
-    <section id="clients" className="h-screen py-20 bg-white relative overflow-hidden flex items-center">
+    <section id="clients" className="bg-white relative overflow-hidden flex items-center pt-14 pb-28 md:pt-16 md:pb-36">
       {/* Sparks and energy field */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatedParticles 
@@ -71,7 +71,7 @@ export default function ClientsSection({ AnimatedParticles }: ClientsSectionProp
         />
       </div>
       <div className="container mx-auto px-4 relative z-10 w-full">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-16 animate-slide-up font-heading">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center mb-8 md:mb-10 animate-slide-up font-heading">
           CONFÍAN EN NOSOTROS
         </h2>
         <div 

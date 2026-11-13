@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { X, ChevronLeft, ChevronRight, Play, Sparkles } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Play } from "lucide-react"
 import Image from "next/image"
 import { VimeoPlayer } from "@/components/VimeoPlayer"
 import projectsData from "@/data/projects.json"
@@ -18,6 +18,8 @@ interface Project {
   image: string
   hasVideo: boolean
   playLink?: string
+  /** Shown in the video slot when the project has no videos */
+  highlightImage?: string
   gallery: string[]
   videos: VideoItem[]
   fullDescription: string
@@ -126,11 +128,18 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
   const closeLightbox = () => setLightboxImage(null)
 
   useEffect(() => {
-    if (!lightboxImage || !selectedProject) return
+    if (!selectedProject) return
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") lightboxNext()
-      if (e.key === "ArrowLeft") lightboxPrev()
-      if (e.key === "Escape") closeLightbox()
+      if (lightboxImage) {
+        if (e.key === "ArrowRight") lightboxNext()
+        if (e.key === "ArrowLeft") lightboxPrev()
+        if (e.key === "Escape") closeLightbox()
+        return
+      }
+      if (e.key === "Escape") {
+        e.preventDefault()
+        closeModal()
+      }
     }
     window.addEventListener("keydown", handleKey)
     return () => window.removeEventListener("keydown", handleKey)
@@ -178,8 +187,7 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Sparkles className="w-6 h-6 text-[#FCDD2F]" />
+            <div className="mb-4">
               <span className="text-[#FCDD2F] text-sm font-semibold tracking-widest uppercase">
                 Nuestro Portafolio
               </span>
@@ -274,9 +282,9 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
           )
         })()}
 
-        {/* Other Projects - Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherProjects.map((project, index) => {
+        {/* Other Projects — 2 columnas iguales (móvil: 1 columna) */}
+        <div className="grid grid-cols-1 gap-6 md:[grid-template-columns:repeat(2,minmax(0,1fr))]">
+          {otherProjects.map((project) => {
             const isSlideshow = hoveredProject === project.id && project.gallery.length > 0
             const currentImage = isSlideshow
               ? project.gallery[slideshowIndex % project.gallery.length]
@@ -288,10 +296,10 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               onClick={() => openProjectModal(project)}
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
-              className={`group relative rounded-2xl overflow-hidden cursor-pointer 
+              className="group relative rounded-2xl overflow-hidden cursor-pointer 
                          border border-white/5 transition-all duration-500
                          hover:border-[#FCDD2F]/30 hover:shadow-[0_0_40px_rgba(252,221,47,0.1)]
-                         ${index === 0 ? 'md:col-span-2 aspect-[2/1]' : 'aspect-[4/3]'}`}
+                         aspect-[4/3] w-full min-w-0"
             >
               {/* Image - with slideshow support */}
                       <Image
@@ -363,8 +371,37 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
               onClick={closeModal}
               className="fixed top-6 right-6 z-50 p-3 bg-white/10 hover:bg-[#FCDD2F] 
                          rounded-full transition-all duration-300 group backdrop-blur-sm"
+              aria-label="Cerrar proyecto"
             >
               <X className="w-6 h-6 text-white group-hover:text-black" />
+            </button>
+
+            {/* Side arrows — navigate between projects */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                navigateProject("prev")
+              }}
+              className="fixed left-3 md:left-6 top-1/2 -translate-y-1/2 z-50 p-3 md:p-4
+                         bg-white/10 hover:bg-[#FCDD2F] rounded-full transition-all duration-300
+                         group backdrop-blur-sm shadow-lg"
+              aria-label="Proyecto anterior"
+            >
+              <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:text-black" />
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                navigateProject("next")
+              }}
+              className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2 z-50 p-3 md:p-4
+                         bg-white/10 hover:bg-[#FCDD2F] rounded-full transition-all duration-300
+                         group backdrop-blur-sm shadow-lg"
+              aria-label="Siguiente proyecto"
+            >
+              <ChevronRight className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:text-black" />
             </button>
 
             <div className="max-w-6xl mx-auto">
@@ -386,15 +423,15 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
 
               {/* Main Content */}
               <div className="grid lg:grid-cols-[1.5fr_1fr] gap-8 mb-12 items-start">
-                {/* Video Section */}
+                {/* Video / highlight media */}
                 <div className="space-y-4">
-                  {selectedProject.videos.length > 0 && (
+                  {selectedProject.videos.length > 0 ? (
                     <>
                       <VimeoPlayer
                         key={`video-${selectedProject.id}-${extractVimeoId(selectedProject.videos[currentVideoIndex].link)}`}
                         videoId={extractVimeoId(selectedProject.videos[currentVideoIndex].link)}
                         title={selectedProject.videos[currentVideoIndex].title}
-                        className="w-full rounded-2xl overflow-hidden"
+                        className="w-full rounded-2xl overflow-hidden shadow-2xl hover:shadow-[#FCDD2F]/20 transition-all duration-500"
                       />
                       
                       {/* Video Selector - Pills */}
@@ -416,7 +453,18 @@ export default function GallerySection({ AnimatedParticles }: GallerySectionProp
                         </div>
                       )}
                     </>
-                      )}
+                  ) : selectedProject.highlightImage ? (
+                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                      <Image
+                        src={selectedProject.highlightImage}
+                        alt={`${selectedProject.title} — imagen destacada`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        priority
+                      />
+                    </div>
+                  ) : null}
                     </div>
 
                 {/* Info Section */}

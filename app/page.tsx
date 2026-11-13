@@ -4,6 +4,7 @@ import HeroClient from "@/components/HeroClient"
 import Footer from "@/sections/Footer"
 import VideoSection from "@/sections/VideoSection"
 import ClientsSection from "@/sections/ClientsSection"
+import ContactCTA from "@/components/ContactCTA"
 import AnimatedParticles from "@/components/AnimatedParticles"
 
 export const metadata: Metadata = {
@@ -85,7 +86,9 @@ export default function InsideProductionsLanding() {
         
         <HeroClient />
         
-        <VideoSection AnimatedParticles={AnimatedParticles} />
+        <VideoSection AnimatedParticles={AnimatedParticles} compact />
+
+        <ContactCTA variant="vr" />
         
         <ClientsSection AnimatedParticles={AnimatedParticles} />
         
