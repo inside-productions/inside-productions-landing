@@ -5,7 +5,7 @@ import GallerySection from "@/sections/GallerySection"
 import Footer from "@/sections/Footer"
 import AnimatedParticles from "@/components/AnimatedParticles"
 
-export default function GaleriaPage() {
+export default function ProyectosPage() {
   return (
     <div className="min-h-screen bg-white text-black font-sans overflow-x-hidden">
       <Header />
@@ -16,4 +16,3 @@ export default function GaleriaPage() {
     </div>
   )
 }
-
